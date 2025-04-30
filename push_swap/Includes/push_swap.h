@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:13:58 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/04/29 16:36:49 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/04/30 17:07:55 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -23,23 +23,41 @@
 
 
 
-typedef struct s_push_swap{
+typedef struct s_stack{
 	int *numbers;
 	int count;
+	int size;
+	int top;
+} t_stack;
+
+typedef struct s_push_swap{
+	t_stack a;
+	t_stack b;
 	int error;
 } t_push_swap;
 
-
+// ~~~~ Parsing Funtion ~~~~~
 t_push_swap	*parse_check(int argc, char **argv);
-size_t	ft_strlcat(char *dst, const char *src, size_t size);
-void	ft_putchar_fd(char c, int fd);
-void	ft_free_split(char **split);
-char	**ft_split(const char *s, char c);
-void	ft_putstr_fd(char *s, int fd);
-int		ft_atoi(const char *str, int  *error);
-void	ft_putnbr_fd(int n, int fd);
+
+// ~~~~ Stack Operations ~~~~
+void    sa(t_push_swap *data);
+void    sb(t_push_swap *data);
+void 	ss(t_push_swap *data);
+void 	print_stack(t_stack *stack,char name);
+
+
+
+
+// ~~~~ Utils Function ~~~~
 size_t	ft_strlen(const char *str);
+void	ft_free_split(char **split);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+char	**ft_split(const char *s, char c);
+int		ft_atoi(const char *str, int  *error);
 void	*ft_calloc(size_t nitems, size_t size);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
 
 #endif
