@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:52:07 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/02 14:53:08 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/02 21:20:59 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -46,28 +46,63 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 	// data->a.size = data->b.size;
 	// data->a.top = -1;
 
-	print_stack(&data->a, 'a');
-	print_stack(&data->b, 'b');
-	ft_putstr_fd("before pb:\n", 1);
+	// print_stack(&data->a, 'a');
+	// print_stack(&data->b, 'b');
+	// ft_putstr_fd("before pb:\n", 1);
 
-	pb(data);
+	// pb(data);
 
-	print_stack(&data->a, 'a');
-	print_stack(&data->b, 'b');
-	ft_putstr_fd("After pb:\n", 1);
-
-
-	pa(data);
-
-	print_stack(&data->a, 'a');
-	print_stack(&data->b, 'b');
-	ft_putstr_fd("After pa:\n", 1);
+	// print_stack(&data->a, 'a');
+	// print_stack(&data->b, 'b');
+	// ft_putstr_fd("After pb:\n", 1);
 
 
 	// pa(data);
-	// ft_putstr_fd("After pa:\n", 1);
+
 	// print_stack(&data->a, 'a');
-	// print_stack_b(data);
+	// print_stack(&data->b, 'b');
+	// ft_putstr_fd("After pa:\n", 1);
+	print_stack_a(&data->a, 'a');
+	print_stack_b(&data->b, 'b');
+
+	sa(data);
+	ft_putstr_fd("After sa:\n", 1);
+	print_stack_a(&data->a, 'a');
+	print_stack_b(&data->b, 'b');
+
+	pb(data);
+	ft_putstr_fd("After pb:\n", 1);
+	print_stack_a(&data->a, 'a');
+	print_stack_b(&data->b, 'b');
+
+	pb(data);
+	ft_putstr_fd("After pb:\n", 1);
+	print_stack_a(&data->a, 'a');
+	print_stack_b(&data->b,'b');
+
+	// sb(data);
+	// ft_putstr_fd("After sb:\n", 1);
+	// print_stack_a(&data->a, 'a');
+	// print_stack_b(&data->b,'b');
+
+	sa(data);
+	ft_putstr_fd("After sa:\n", 1);
+	print_stack_a(&data->a, 'a');
+	print_stack_b(&data->b, 'b');
+
+	if (data->b.top >= 1 )
+	{
+		pa(data);
+		pa(data);
+		ft_putstr_fd("After pa:\n", 1);
+		print_stack_a(&data->a, 'a');
+		print_stack_b(&data->b,'b');
+	}
+	else 
+		return (1);
+	
+
+	
 
 	// pb(data);
 	// ft_putstr_fd("After pa:\n", 1);

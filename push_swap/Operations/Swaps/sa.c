@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:48:18 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/02 13:38:08 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/02 18:24:31 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,7 +14,7 @@
 
 
 void    sa(t_push_swap *data);
-void    print_stack(t_stack *stack, char name);
+void    print_stack_a(t_stack *pile, char name);
 
 void    sa(t_push_swap *data)
 {
@@ -32,26 +32,42 @@ void    sa(t_push_swap *data)
 // This function help in printing the numbers and output onto the 
 // terminal.
 
-void    print_stack(t_stack *stack, char name)
+void    print_stack_a(t_stack *pile, char name)
 {
     int i;
 
     ft_putstr_fd("Stack ", 1);
-    ft_putchar_fd(name, 1);
+    ft_putchar_fd(name , 1);
     ft_putstr_fd(": ", 1);
 
-    if (stack->top == -1)
+    if (pile->top == -1)
     {
         ft_putstr_fd("(empty\n)", 1);
         return ;
     }
 
-    i = stack->top;
+    i = pile->top;
     while (i  >= 0)
     {
-        ft_putnbr_fd(stack->numbers[i], 1);
+        ft_putnbr_fd(pile->numbers[i], 1);
         ft_putchar_fd(' ', 1);
         i--;
     }
     ft_putchar_fd('\n', 1);
 }
+
+// void print_stack_a(t_push_swap *data)
+// {
+//     printf("Stack A:\n");
+
+//     if (data->a.top == -1)
+//     {
+//         printf("[empty]\n");
+//         return;
+//     }
+
+//     for (int i = data->a.top; i >= 0; i--)
+//     {
+//         printf("%d\n", data->a.numbers[i]);
+//     }
+// }

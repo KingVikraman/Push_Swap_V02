@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:13:58 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/02 14:26:38 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/02 18:23:24 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -34,7 +34,7 @@ typedef struct s_push_swap{
 	t_stack a;
 	t_stack b;
 	int error;
-	struct s_stack *data;
+	struct s_stack *pile;
 } t_push_swap;
 
 // ~~~~ Parsing Funtion ~~~~~
@@ -43,7 +43,6 @@ t_push_swap	*parse_check(int argc, char **argv);
 // ~~~~ Swap Operations ~~~~
 void    sa(t_push_swap *data);
 void    sb(t_push_swap *data);
-void print_stack_b(t_push_swap *data);
 void 	ss(t_push_swap *data);
 
 // ~~~~ Push Operations ~~~~
@@ -51,8 +50,9 @@ void pa(t_push_swap *data);
 void pb(t_push_swap *data);
 
 // ~~~~ Print Functions ~~~~~
-void 	print_stack(t_stack *stack,char name);
-
+// void 	print_stack(t_stack *stack,char name);
+void    print_stack_a(t_stack *pile, char name);
+void    print_stack_b(t_stack *pile, char name);
 
 // ~~~~ Utils Function ~~~~
 size_t	ft_strlen(const char *str);
