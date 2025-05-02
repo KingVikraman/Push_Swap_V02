@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:48:18 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/02 13:32:50 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/02 13:38:08 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,7 +14,6 @@
 
 
 void    sa(t_push_swap *data);
-void    ss(t_push_swap *data);
 void    print_stack(t_stack *stack, char name);
 
 void    sa(t_push_swap *data)
@@ -29,15 +28,6 @@ void    sa(t_push_swap *data)
     ft_putstr_fd("sa\n", 1);
 }
 
-
-//this function is called the ss which is technically the sa and 
-//sb done at the same time.
-void    ss(t_push_swap *data)
-{
-    sa(data);
-    sb(data);
-    ft_putstr_fd("ss\n", 1);
-}
 
 // This function help in printing the numbers and output onto the 
 // terminal.

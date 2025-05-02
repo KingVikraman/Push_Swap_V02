@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:52:07 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/02 13:33:45 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/02 14:53:08 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -47,10 +47,37 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 	// data->a.top = -1;
 
 	print_stack(&data->a, 'a');
+	print_stack(&data->b, 'b');
+	ft_putstr_fd("before pb:\n", 1);
 
-	sa(data);
-	ft_putstr_fd("After sa:\n", 1);
+	pb(data);
+
 	print_stack(&data->a, 'a');
+	print_stack(&data->b, 'b');
+	ft_putstr_fd("After pb:\n", 1);
+
+
+	pa(data);
+
+	print_stack(&data->a, 'a');
+	print_stack(&data->b, 'b');
+	ft_putstr_fd("After pa:\n", 1);
+
+
+	// pa(data);
+	// ft_putstr_fd("After pa:\n", 1);
+	// print_stack(&data->a, 'a');
+	// print_stack_b(data);
+
+	// pb(data);
+	// ft_putstr_fd("After pa:\n", 1);
+	// print_stack_b(data);
+	// print_stack(&data->a, 'a');
+	// pa(data);
+	// pa(data);
+	// print_stack(&data->a, 'a');
+	// print_stack_b(data);
+
 	// i = 0;
 	// while (i < data->count)
 	// {
