@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:48:27 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/02 18:21:52 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/03 20:16:29 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -38,7 +38,7 @@ void    print_stack_b(t_stack *pile, char name)
 
     if (pile->top == -1)
     {
-        ft_putstr_fd("(empty\n)", 1);
+        ft_putstr_fd("(empty)\n", 1);
         return ;
     }
 

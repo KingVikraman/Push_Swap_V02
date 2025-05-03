@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:13:58 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/02 18:23:24 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/03 22:44:29 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -48,6 +48,10 @@ void 	ss(t_push_swap *data);
 // ~~~~ Push Operations ~~~~
 void pa(t_push_swap *data);
 void pb(t_push_swap *data);
+
+// ~~~~ Rotate Operations ~~~~
+void	rb(t_push_swap *data);
+void	ra(t_push_swap *data);
 
 // ~~~~ Print Functions ~~~~~
 // void 	print_stack(t_stack *stack,char name);
