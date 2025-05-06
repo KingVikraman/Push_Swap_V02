@@ -1,27 +1,22 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pb.c                                               :+:      :+:    :+:   */
+/*   rrr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 10:48:36 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/04 19:53:37 by rvikrama         ###   ########.fr       */
+/*   Created: 2025/05/04 19:49:05 by rvikrama          #+#    #+#             */
+/*   Updated: 2025/05/04 19:50:39 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "../../Includes/push_swap.h"
-void    pb(t_push_swap *data);
 
+void    rrr(t_push_swap *data);
 
-void    pb(t_push_swap *data)
+void    rrr(t_push_swap *data)
 {
-	if (data->a.top == -1)
-		return ;
-
-	data->b.top++;
-	data->b.numbers[data->b.top] = data->a.numbers[data->a.top];
-	data->a.top--;
-
-	ft_putstr_fd("pb\n", 1);
+    rra(data);
+    rrb(data);
+    ft_putstr_fd("rrr\n", 1);
 }

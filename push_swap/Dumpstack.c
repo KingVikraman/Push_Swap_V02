@@ -31,3 +31,25 @@
 	// ft_putstr_fd("After sb:\n", 1);
 	// print_stack_a(&data->a, 'a');
 	// print_stack_b(&data->b,'b');
+
+
+	// data->a.numbers = malloc(sizeof(int) * data->b.size);
+	// data->a.size = data->b.size;
+	// data->a.top = -1;
+
+	// print_stack(&data->a, 'a');
+	// print_stack(&data->b, 'b');
+	// ft_putstr_fd("before pb:\n", 1);
+
+	// pb(data);
+
+	// print_stack(&data->a, 'a');
+	// print_stack(&data->b, 'b');
+	// ft_putstr_fd("After pb:\n", 1);
+
+
+	// pa(data);
+
+	// print_stack(&data->a, 'a');
+	// print_stack(&data->b, 'b');
+	// ft_putstr_fd("After pa:\n", 1);
