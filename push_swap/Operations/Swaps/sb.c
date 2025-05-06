@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:48:27 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/03 20:16:29 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/05 18:43:41 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,7 +14,7 @@
 
 
 void sb(t_push_swap *data);
-void    print_stack_b(t_stack *pile, char name);
+void    print_stack_b(t_push_swap *data, char name);
 
 void    sb(t_push_swap *data)
 {
@@ -28,7 +28,7 @@ void    sb(t_push_swap *data)
     ft_putstr_fd("sb\n", 1);
 }
 
-void    print_stack_b(t_stack *pile, char name)
+void    print_stack_b(t_push_swap *data, char name)
 {
     int i;
 
@@ -36,16 +36,16 @@ void    print_stack_b(t_stack *pile, char name)
     ft_putchar_fd(name, 1);
     ft_putstr_fd(": ", 1);
 
-    if (pile->top == -1)
+    if (data->pile->top == -1)
     {
         ft_putstr_fd("(empty)\n", 1);
         return ;
     }
 
-    i = pile->top;
+    i = data->pile->top;
     while (i  >= 0)
     {
-        ft_putnbr_fd(pile->numbers[i], 1);
+        ft_putnbr_fd(data->pile->numbers[i], 1);
         ft_putchar_fd(' ', 1);
         i--;
     }

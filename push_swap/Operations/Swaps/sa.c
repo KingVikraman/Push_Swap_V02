@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:48:18 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/02 18:24:31 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/06 15:01:13 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,7 +14,7 @@
 
 
 void    sa(t_push_swap *data);
-void    print_stack_a(t_stack *pile, char name);
+void    print_stack_a(t_push_swap *data, char name);
 
 void    sa(t_push_swap *data)
 {
@@ -32,24 +32,25 @@ void    sa(t_push_swap *data)
 // This function help in printing the numbers and output onto the 
 // terminal.
 
-void    print_stack_a(t_stack *pile, char name)
+void    print_stack_a(t_push_swap *data, char name)
 {
     int i;
 
     ft_putstr_fd("Stack ", 1);
     ft_putchar_fd(name , 1);
     ft_putstr_fd(": ", 1);
+    ft_putnbr_fd(data->a.top, 1);
 
-    if (pile->top == -1)
+    if (data->pile->top == -1)
     {
         ft_putstr_fd("(empty\n)", 1);
         return ;
     }
 
-    i = pile->top;
-    while (i  >= 0)
+    i = data->pile->top;
+    while (i >= 0)
     {
-        ft_putnbr_fd(pile->numbers[i], 1);
+        ft_putnbr_fd(data->pile->numbers[i], 1);
         ft_putchar_fd(' ', 1);
         i--;
     }

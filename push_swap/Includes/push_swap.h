@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:13:58 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/04 19:52:36 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/05 18:42:40 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -60,8 +60,8 @@ void    rr(t_push_swap *data);
 
 // ~~~~ Print Functions ~~~~~
 // void 	print_stack(t_stack *stack,char name);
-void    print_stack_a(t_stack *pile, char name);
-void    print_stack_b(t_stack *pile, char name);
+void    print_stack_a(t_push_swap *data, char name);
+void    print_stack_b(t_push_swap *data, char name);
 
 // ~~~~ Utils Function ~~~~
 size_t	ft_strlen(const char *str);
