@@ -1,27 +1,28 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pb.c                                               :+:      :+:    :+:   */
+/*   pa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 10:48:36 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/04 19:53:37 by rvikrama         ###   ########.fr       */
+/*   Created: 2025/04/23 17:32:36 by rvikrama          #+#    #+#             */
+/*   Updated: 2025/05/06 15:43:02 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "../../Includes/push_swap.h"
-void    pb(t_push_swap *data);
+#include "../Includes/push_swap.h"
+
+void    pa(t_push_swap *data);
 
 
-void    pb(t_push_swap *data)
+void    pa(t_push_swap *data)
 {
-	if (data->a.top == -1)
-		return ;
+    if (data->b.top == -1)
+        return ;
 
-	data->b.top++;
-	data->b.numbers[data->b.top] = data->a.numbers[data->a.top];
-	data->a.top--;
+    data->a.top++;
+    data->a.numbers[data->a.top] = data->b.numbers[data->b.top];
+    data->b.top--;
 
-	ft_putstr_fd("pb\n", 1);
+    ft_putstr_fd("pa\n", 1);
 }

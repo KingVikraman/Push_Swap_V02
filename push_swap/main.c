@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:52:07 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/06 14:18:16 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/07 23:57:22 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -45,41 +45,44 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 	
 	print_stack_a(&data->a, 'a');
 	print_stack_b(&data->b, 'b');
+	
 
-	sa(data);
+	sort_three(data);
+
+	//sa(data);
 	//ft_putstr_fd("After sa:\n", 1);
 	print_stack_a(&data->a, 'a');
 	print_stack_b(&data->b, 'b');
 
-	while(data->a.top >= 4 )
-	{
-		pb(data);
-		print_stack_a(&data->a, 'a');
-		print_stack_b(&data->b, 'b');
-	}
+	// while(data->a.top >= 4 )
+	// {
+	// 	pb(data);
+	// 	print_stack_a(&data->a, 'a');
+	// 	print_stack_b(&data->b, 'b');
+	// }
 
-	ra(data);
-	rb(data);
-	print_stack_a(&data->a, 'a');
-	print_stack_b(&data->b, 'b');
+	// ra(data);
+	// rb(data);
+	// print_stack_a(&data->a, 'a');
+	// print_stack_b(&data->b, 'b');
 
-	rra(data);
-	print_stack_a(&data->a, 'a');
-	print_stack_b(&data->b, 'b');
+	// rra(data);
+	// print_stack_a(&data->a, 'a');
+	// print_stack_b(&data->b, 'b');
 
-	ss(data);
-	//ft_putstr_fd("After sa:\n", 1);
-	print_stack_a(&data->a, 'a');
-	print_stack_b(&data->b, 'b');
+	// ss(data);
+	// //ft_putstr_fd("After sa:\n", 1);
+	// print_stack_a(&data->a, 'a');
+	// print_stack_b(&data->b, 'b');
 
-	while (data->b.top >= 0 )
-	{
-		pa(data);
-		//pa(data);
-		//ft_putstr_fd("After pa:\n", 1);
-		print_stack_a(&data->a, 'a');
-		print_stack_b(&data->b,'b');
-	}
+	// while (data->b.top >= 0 )
+	// {
+	// 	pa(data);
+	// 	//pa(data);
+	// 	//ft_putstr_fd("After pa:\n", 1);
+	// 	print_stack_a(&data->a, 'a');
+	// 	print_stack_b(&data->b,'b');
+	// }
 
 	
 	free(data->a.numbers);
@@ -90,7 +93,7 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 }
 
 
-static void *combine_args(int argc, char **argv)
+static void *	combine_args(int argc, char **argv)
 {
 	char	*combined;
 	size_t	total_len;
@@ -99,21 +102,23 @@ static void *combine_args(int argc, char **argv)
 	total_len = 0;
 	i = argc;
 	while(--i >= 1)
+	{
 		total_len += ft_strlen(argv[i]) + 1;
-	
+	}
 	combined = ft_calloc(total_len + 1, sizeof(char));
 	if (!combined)
 		return (NULL);
 
-	i = argc ;
+	i = argc;
 	while (--i >= 1)
 	{
 		ft_strlcat(combined, argv[i],total_len + 1);
-		if (i != 1)
+		if (i != argc)
 			ft_strlcat(combined, " ", total_len + 1);
 	}
 	return (combined);
 }
+
 
 
 t_push_swap *parse_check(int argc, char **argv)
@@ -161,15 +166,33 @@ t_push_swap *parse_check(int argc, char **argv)
 		return (ft_free_split(split), NULL);
 	}
 
-	// Parse numbers into stack A
+	//Parse numbers into stack A
 	data->error = 0;
 	i = -1;
 	while (count > ++i)
 	{
 		data->a.numbers[i] = ft_atoi(split[i], &data->error);
-		if (data->error)
-			break;
+		if (!data->error)
+		{
+			data->a.size = count;
+			data->a.top = count - 1;
+		}
+		else 
+		{
+			data->a.size = 0;
+			data->a.top = -1;
+		}
 	}
+	// data->error = 0;
+	// i = 0;
+	// while (i < count)
+	// {
+	// 	// data->a.numbers[i] = ft_atoi(split[i], &data->error);
+	// 	data->a.numbers[count - 1 - i] = ft_atoi(split[i], &data->error);
+	// 	if (data->error)
+	// 		break;
+	// 	i++;
+	// }
 
 	// Set stack metadata
 	data->a.size = count;

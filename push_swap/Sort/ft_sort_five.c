@@ -6,18 +6,25 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 18:11:25 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/05 21:57:00 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/06 20:31:35 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "../Includes/push_swap.h"
 
+void 	move_to_top_a(t_push_swap *data, int index);
+int		find_lowest_index(t_push_swap *data);
+void	sort_five(t_push_swap *data);
+int		stack_size(t_stack a);
+
+
+
 void	sort_five(t_push_swap *data)
 {
 	while (stack_size(data->a) > 3)
 	{
-		int index = find_lowest_index(data->a); // You’ll write this
-		rra(data, index);             			// ra/rra until it’s on top
+		int index = find_lowest_index(data);	// You’ll write this
+		move_to_top_a(data, index);								// ra/rra until it’s on top
 		pb(data);                               // Push to b
 	}
 	sort_three(data);                          // Sort 3 in A
@@ -47,3 +54,46 @@ int		find_lowest_index(t_push_swap *data)
 	}
 	return index;
 }
+
+// void	move_to_top_a(t_push_swap *data, int index)
+// {
+// 	int size;
+// 	int top;
+
+// 	size = stack_size(data->a);
+// 	top = data->a.top;
+
+// 	if (index >= size / 2)
+// 	{
+// 		while (data->a.top != index)
+// 		{
+// 			printf("%d,%d\n", data->a.top, index);
+// 			rra(data);
+// 		}
+// 	}
+// 	else
+// 	{
+// 		while (data->a.top != index)
+// 			ra(data);
+// 	}
+// }
+
+
+void	move_to_top_a(t_push_swap *data, int index)
+{
+	int size = stack_size(data->a);
+	int target = data->a.numbers[index];
+
+	if (index >= size / 2)
+	{
+		while (data->a.numbers[data->a.top] != target)
+			rra(data);
+	}
+	else
+	{
+		while (data->a.numbers[data->a.top] != target)
+			ra(data);
+	}
+}
+
+

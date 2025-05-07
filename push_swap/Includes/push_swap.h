@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:13:58 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/05 18:42:40 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/07 21:57:10 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -27,7 +27,7 @@ typedef struct s_stack{
 	int *numbers;
 	int count;
 	int size;
-	int top;
+	int top; // number[0]
 } t_stack;
 
 typedef struct s_push_swap{
@@ -60,8 +60,8 @@ void    rr(t_push_swap *data);
 
 // ~~~~ Print Functions ~~~~~
 // void 	print_stack(t_stack *stack,char name);
-void    print_stack_a(t_push_swap *data, char name);
-void    print_stack_b(t_push_swap *data, char name);
+void    print_stack_a(t_stack *pile, char name);
+void    print_stack_b(t_stack *pile, char name);
 
 // ~~~~ Utils Function ~~~~
 size_t	ft_strlen(const char *str);
@@ -73,6 +73,18 @@ char	**ft_split(const char *s, char c);
 int		ft_atoi(const char *str, int  *error);
 void	*ft_calloc(size_t nitems, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
+
+
+
+int		stack_size(t_stack a);
+void	sort_two(t_push_swap *data);
+void	sort_three(t_push_swap *data);
+void	sort_five(t_push_swap *data);
+void 	move_to_top_a(t_push_swap *data, int index);
+int		find_lowest_index(t_push_swap *data);
+
+
+
 
 
 #endif

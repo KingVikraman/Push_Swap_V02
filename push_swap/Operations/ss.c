@@ -6,11 +6,11 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:37:17 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/02 13:37:58 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/06 15:42:06 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "../../Includes/push_swap.h"
+#include "../Includes/push_swap.h"
 
 void    ss(t_push_swap *data);
 

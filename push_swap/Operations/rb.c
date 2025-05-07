@@ -1,28 +1,36 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pa.c                                               :+:      :+:    :+:   */
+/*   rb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 17:32:36 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/04 19:52:45 by rvikrama         ###   ########.fr       */
+/*   Created: 2025/05/03 22:42:40 by rvikrama          #+#    #+#             */
+/*   Updated: 2025/05/06 15:42:44 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "../../Includes/push_swap.h"
-
-void    pa(t_push_swap *data);
+#include "../Includes/push_swap.h"
 
 
-void    pa(t_push_swap *data)
+void	rb(t_push_swap *data);
+
+void	rb(t_push_swap *data)
 {
-    if (data->b.top == -1)
-        return ;
+	int i;
+	int temp;
 
-    data->a.top++;
-    data->a.numbers[data->a.top] = data->b.numbers[data->b.top];
-    data->b.top--;
+	if (data->b.top < 1)
+		return ;
 
-    ft_putstr_fd("pa\n", 1);
+	temp = data->b.numbers[data->b.top];
+
+	i = data->b.top;
+	while (i > 0)
+	{
+		data->b.numbers[i] = data->b.numbers[i - 1];
+		i--;
+	}
+	data->b.numbers[0] = temp;
+	ft_putstr_fd("rb\n", 1);
 }

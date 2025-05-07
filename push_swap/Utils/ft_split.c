@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:26:41 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/04/29 16:27:08 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:29:37 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -63,7 +63,7 @@ char	**ft_split(const char *s, char c)
 	{
 		if (s[i] != c && start == -1)
 			start = i;
-		else if ((s[i] == c || s[i + 1] == '\0') && start != -1)
+		else if ((s[i] == c || (s[i + 1] == '\0' && s[i] != c)) && start != -1)
 		{
 			if (s[i] == c)
 				res[j++] = word_dup(s, start, i);

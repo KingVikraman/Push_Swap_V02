@@ -6,11 +6,14 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 18:11:15 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/05 20:30:41 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/08 00:01:22 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "../Includes/push_swap.h"
+
+void	sort_three(t_push_swap *data);
+
 
 void	sort_three(t_push_swap *data)
 {
@@ -21,6 +24,9 @@ void	sort_three(t_push_swap *data)
 	top = data->a.numbers[data->a.top];
 	mid = data->a.numbers[data->a.top - 1];
 	bottom = data->a.numbers[data->a.top - 2];
+	printf("%d\n", top);
+	printf("%d\n", mid);
+	printf("%d\n", bottom);
 
 	if (top > mid && mid < bottom && top < bottom)
 		sa(data);
@@ -29,16 +35,19 @@ void	sort_three(t_push_swap *data)
 	{
 		sa(data);
 		rra(data);
+		
 	}
-
 	else if (top > mid && mid < bottom && top > bottom)
 		ra(data);
-	
+
 	else if (top < mid && mid > bottom && top < bottom)
 	{
+		rra(data);
+		print_stack_a(&data->a, 'a');
 		sa(data);
-		ra(data);
+		
 	}
+
 	else if (top < mid && mid > bottom && top > bottom)
 		rra(data);
 	
