@@ -1,28 +1,24 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pa.c                                               :+:      :+:    :+:   */
+/*   ss.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 17:32:36 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/06 15:43:02 by rvikrama         ###   ########.fr       */
+/*   Created: 2025/05/02 13:37:17 by rvikrama          #+#    #+#             */
+/*   Updated: 2025/05/08 12:32:54 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "../Includes/push_swap.h"
+#include "../../Includes/push_swap.h"
 
-void    pa(t_push_swap *data);
+void    ss(t_push_swap *data);
 
-
-void    pa(t_push_swap *data)
+//this function is called the ss which is technically the sa and 
+//sb done at the same time.
+void    ss(t_push_swap *data)
 {
-    if (data->b.top == -1)
-        return ;
-
-    data->a.top++;
-    data->a.numbers[data->a.top] = data->b.numbers[data->b.top];
-    data->b.top--;
-
-    ft_putstr_fd("pa\n", 1);
+    sa(data);
+    sb(data);
+    ft_putstr_fd("ss\n", 1);
 }

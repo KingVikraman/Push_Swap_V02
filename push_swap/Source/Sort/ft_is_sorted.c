@@ -1,29 +1,35 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   ft_is_sorted.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/29 16:28:15 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/04/29 16:28:58 by rvikrama         ###   ########.fr       */
+/*   Created: 2025/05/08 17:38:37 by rvikrama          #+#    #+#             */
+/*   Updated: 2025/05/11 19:58:44 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "../Includes/push_swap.h"
+#include "../../Includes/push_swap.h"
 
-void	ft_free_split(char **split)
+int	is_sorted(t_stack *a);
+
+
+int	is_sorted(t_stack *a)
 {
-	int	i;
+	int i;
 
-	if (!split)
-		return;
-	
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);  // Free each string
-		i++;
-	}
-	free(split);  // Free the array
+    if (a->size <= 1)
+        return (1);  // empty or single element = sorted
+
+    i = a->top;
+    while (i > 0)
+    {
+        if (a->numbers[i] > a->numbers[i - 1])
+            return (0);  // Not sorted
+        i--;
+    }
+	ft_putstr_fd("Numbers are sorted ;-).\n", 1);
+    return (1);  // Sorted
 }
+

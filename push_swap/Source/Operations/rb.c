@@ -1,34 +1,36 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   rb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/29 16:24:11 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/04/29 16:25:09 by rvikrama         ###   ########.fr       */
+/*   Created: 2025/05/03 22:42:40 by rvikrama          #+#    #+#             */
+/*   Updated: 2025/05/08 12:30:34 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "../Includes/push_swap.h"
+#include "../../Includes/push_swap.h"
 
 
-void	*ft_calloc(size_t nitems, size_t size)
+void	rb(t_push_swap *data);
+
+void	rb(t_push_swap *data)
 {
-	char			*a;
-	unsigned int	tot;
-	size_t			i;
+	int i;
+	int temp;
 
-	tot = size * nitems;
-	a = malloc(size * nitems);
-	if (a == NULL)
-		return (NULL);
-	i = 0;
-	while (tot > 0)
+	if (data->b.top < 1)
+		return ;
+
+	temp = data->b.numbers[data->b.top];
+
+	i = data->b.top;
+	while (i > 0)
 	{
-		a[i] = 0;
-		i++;
-		tot--;
+		data->b.numbers[i] = data->b.numbers[i - 1];
+		i--;
 	}
-	return ((void *)a);
+	data->b.numbers[0] = temp;
+	ft_putstr_fd("rb\n", 1);
 }

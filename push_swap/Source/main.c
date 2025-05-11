@@ -6,11 +6,11 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:52:07 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/07 23:57:22 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/10 00:17:02 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "Includes/push_swap.h"
+#include "../Includes/push_swap.h"
 
 
 
@@ -22,12 +22,14 @@ int		main(int argc, char **argv);
 int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 {
 	t_push_swap *data;// <- custom struct made by me, in the header file.
+	int count;
+
+	count = argc -1;
 	if (argc < 2)								// -|
 	{											//  |_ This is the fucntion that help check 
 		ft_putstr_fd("Error\n", 1);		 //  |  if the arguments that are parsed in are valid
 		return (1);								// -|  or just the output file.
 	}
-
 	data = parse_check(argc, argv); // <- this function calls parse_check and pushes the ac and av data, then assigns that to the struct.
 	if (!data || data->error)						//  -|
 	{												//	 |
@@ -38,53 +40,31 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 		free(data);							//    |		and exits by returning (1).
 		return (1);									//  -|
 	}
-	
 	data->b.numbers = malloc(sizeof(int) * data->a.size);
 	data->b.size = data->a.size;
 	data->b.top = -1;
+	if (is_sorted(&data->a))
+	{
+		free(data->a.numbers);	
+		free(data);
+		return (0);
+	}
+	print_stack_a(&data->a, 'a');
+	print_stack_b(&data->b, 'b');
+	if (count <= 5)
+	{
+		use_hardcoded_sort(data, count);
+		printf("Hello2");
+	}
+	else
+	{
+		printf("Hello");
+	 	use_advanced_sort(data, count);
+	}
 	
 	print_stack_a(&data->a, 'a');
 	print_stack_b(&data->b, 'b');
-	
 
-	sort_three(data);
-
-	//sa(data);
-	//ft_putstr_fd("After sa:\n", 1);
-	print_stack_a(&data->a, 'a');
-	print_stack_b(&data->b, 'b');
-
-	// while(data->a.top >= 4 )
-	// {
-	// 	pb(data);
-	// 	print_stack_a(&data->a, 'a');
-	// 	print_stack_b(&data->b, 'b');
-	// }
-
-	// ra(data);
-	// rb(data);
-	// print_stack_a(&data->a, 'a');
-	// print_stack_b(&data->b, 'b');
-
-	// rra(data);
-	// print_stack_a(&data->a, 'a');
-	// print_stack_b(&data->b, 'b');
-
-	// ss(data);
-	// //ft_putstr_fd("After sa:\n", 1);
-	// print_stack_a(&data->a, 'a');
-	// print_stack_b(&data->b, 'b');
-
-	// while (data->b.top >= 0 )
-	// {
-	// 	pa(data);
-	// 	//pa(data);
-	// 	//ft_putstr_fd("After pa:\n", 1);
-	// 	print_stack_a(&data->a, 'a');
-	// 	print_stack_b(&data->b,'b');
-	// }
-
-	
 	free(data->a.numbers);
 	free(data->b.numbers);
 	free(data);
@@ -183,17 +163,7 @@ t_push_swap *parse_check(int argc, char **argv)
 			data->a.top = -1;
 		}
 	}
-	// data->error = 0;
-	// i = 0;
-	// while (i < count)
-	// {
-	// 	// data->a.numbers[i] = ft_atoi(split[i], &data->error);
-	// 	data->a.numbers[count - 1 - i] = ft_atoi(split[i], &data->error);
-	// 	if (data->error)
-	// 		break;
-	// 	i++;
-	// }
-
+	
 	// Set stack metadata
 	data->a.size = count;
 	data->a.top = count - 1;  // Top points to last element
@@ -203,59 +173,6 @@ t_push_swap *parse_check(int argc, char **argv)
 	ft_free_split(split);
 	return (data);
 }
-
-// static void init_parser(t_push_swap *data, int count)
-// {
-// 	data->count = count;
-// 	data->error = 0;
-// 	data->numbers = malloc(sizeof(int) * count);
-//     if (!data->numbers)
-//     data->error = 1;
-// }
-
-// t_push_swap	*parse_check(int argc, char **argv)
-// {
-// 	t_push_swap	*data;
-// 	char		*combined;
-// 	char		**split;
-// 	int			i;
-
-// 	if (argc < 2)
-// 		return (NULL);
-
-// 	combined = combine_args(argc, argv);
-// 	if (!combined)
-// 		return (NULL);
-
-// 	split = ft_split(combined, ' ');
-// 	free(combined);
-// 	if (!split)
-// 		return (NULL);
-
-// 	data = malloc(sizeof(t_stack));
-// 	if (!data)
-// 		return (ft_free_split(split), NULL);
-
-// 	data->count = 0;
-// 	while (split[data->count])
-// 		data->count++;
-
-// 	data->numbers = malloc(sizeof(int) * data->count);
-// 	if (!data->numbers)
-// 		return (ft_free_split(split), free(data), NULL);
-
-// 	i = -1;
-// 	data->error = 0;
-// 	while (++i < data->count)
-// 	{
-// 		data->numbers[i] = ft_atoi(split[i], &data->error);
-// 		if (data->error)
-// 			break ;
-// 	}
-
-// 	ft_free_split(split);
-// 	return (data);
-// }
 
 
 

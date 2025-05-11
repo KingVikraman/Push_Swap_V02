@@ -1,27 +1,29 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pb.c                                               :+:      :+:    :+:   */
+/*   ft_free_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 10:48:36 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/06 15:42:51 by rvikrama         ###   ########.fr       */
+/*   Created: 2025/04/29 16:28:15 by rvikrama          #+#    #+#             */
+/*   Updated: 2025/05/08 12:34:06 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "../Includes/push_swap.h"
-void    pb(t_push_swap *data);
+#include "../../Includes/push_swap.h"
 
-
-void    pb(t_push_swap *data)
+void	ft_free_split(char **split)
 {
-	if (data->a.top == -1)
-		return ;
+	int	i;
 
-	data->b.top++;
-	data->b.numbers[data->b.top] = data->a.numbers[data->a.top];
-	data->a.top--;
-
-	ft_putstr_fd("pb\n", 1);
+	if (!split)
+		return;
+	
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);  // Free each string
+		i++;
+	}
+	free(split);  // Free the array
 }

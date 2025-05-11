@@ -6,12 +6,12 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 21:02:34 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/07 21:26:57 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/08 12:30:32 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 
-#include "../Includes/push_swap.h"
+#include "../../Includes/push_swap.h"
 
 void	ra(t_push_swap *data);
 

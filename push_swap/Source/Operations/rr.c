@@ -1,22 +1,23 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_two.c                                      :+:      :+:    :+:   */
+/*   rr.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/05 18:11:04 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/05 21:37:24 by rvikrama         ###   ########.fr       */
+/*   Created: 2025/05/04 19:51:02 by rvikrama          #+#    #+#             */
+/*   Updated: 2025/05/08 12:30:37 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "../Includes/push_swap.h"
+#include "../../Includes/push_swap.h"
 
-void	sort_two(t_push_swap *data);
+void    rr(t_push_swap *data);
 
 
-void	sort_two(t_push_swap *data)
+void    rr(t_push_swap *data)
 {
-	if(data->a.numbers[data->a.top] > data->a.numbers[data->a.top - 1])
-		sa(data);
+    ra(data);
+    rb(data);
+    ft_putstr_fd("rr\n", 1);
 }

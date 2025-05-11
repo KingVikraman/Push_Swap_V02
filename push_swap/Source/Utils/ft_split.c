@@ -6,13 +6,13 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:26:41 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/07 16:29:37 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/08 12:34:10 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 
 
-#include "../Includes/push_swap.h"
+#include "../../Includes/push_swap.h"
 
 
 static int	word_count(const char *s, char c)

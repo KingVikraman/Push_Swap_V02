@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:13:58 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/07 21:57:10 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/11 21:09:00 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -75,13 +75,27 @@ void	*ft_calloc(size_t nitems, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
 
-
+int		is_sorted(t_stack *a);
 int		stack_size(t_stack a);
 void	sort_two(t_push_swap *data);
-void	sort_three(t_push_swap *data);
 void	sort_five(t_push_swap *data);
-void 	move_to_top_a(t_push_swap *data, int index);
+void	sort_three(t_push_swap *data);
 int		find_lowest_index(t_push_swap *data);
+void 	move_to_top_a(t_push_swap *data, int index);
+void	use_hardcoded_sort(t_push_swap *data, int count);
+void 	use_advanced_sort(t_push_swap *data, int count);
+void restore_original_values(t_push_swap *data, int *sorted_original);
+
+
+bool 	is_empty(t_stack s);
+void	index_stack(t_push_swap *data);
+void	chunk_sort(t_push_swap *data);
+int 	find_max_position(t_stack *s);
+void 	smart_rotate_b(t_push_swap *data, int pos);
+int     find_in_chunk(t_stack a, int chunk_start, int chunk_end);
+void    bubble_sort(int *arr, int size);
+
+
 
 
 

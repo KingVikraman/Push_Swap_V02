@@ -6,11 +6,11 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 18:11:25 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/06 20:31:35 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/11 20:50:55 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "../Includes/push_swap.h"
+#include "../../Includes/push_swap.h"
 
 void 	move_to_top_a(t_push_swap *data, int index);
 int		find_lowest_index(t_push_swap *data);
@@ -81,18 +81,22 @@ int		find_lowest_index(t_push_swap *data)
 
 void	move_to_top_a(t_push_swap *data, int index)
 {
-	int size = stack_size(data->a);
-	int target = data->a.numbers[index];
+	if (index < 0 || index > data->a.top)
+		return ;
+	
+	int steps;
 
-	if (index >= size / 2)
+	if (index <= data->a.top / 2)
 	{
-		while (data->a.numbers[data->a.top] != target)
-			rra(data);
+		steps = index;
+		while (steps--)
+			ra(data);
 	}
 	else
 	{
-		while (data->a.numbers[data->a.top] != target)
-			ra(data);
+		steps = data->a.top - index;
+		while (steps--)
+			rra(data);
 	}
 }
 
