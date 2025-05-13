@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 18:11:25 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/11 20:50:55 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:01:12 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -55,49 +55,28 @@ int		find_lowest_index(t_push_swap *data)
 	return index;
 }
 
-// void	move_to_top_a(t_push_swap *data, int index)
-// {
-// 	int size;
-// 	int top;
-
-// 	size = stack_size(data->a);
-// 	top = data->a.top;
-
-// 	if (index >= size / 2)
-// 	{
-// 		while (data->a.top != index)
-// 		{
-// 			printf("%d,%d\n", data->a.top, index);
-// 			rra(data);
-// 		}
-// 	}
-// 	else
-// 	{
-// 		while (data->a.top != index)
-// 			ra(data);
-// 	}
-// }
-
-
 void	move_to_top_a(t_push_swap *data, int index)
 {
-	if (index < 0 || index > data->a.top)
-		return ;
-	
-	int steps;
+	int size;
+	int top;
 
-	if (index <= data->a.top / 2)
+	size = stack_size(data->a);
+	top = data->a.top;
+
+	if (index >= size / 2)
 	{
-		steps = index;
-		while (steps--)
-			ra(data);
+		while (data->a.top != index)
+		{
+			printf("%d,%d\n", data->a.top, index);
+			rra(data);
+		}
 	}
 	else
 	{
-		steps = data->a.top - index;
-		while (steps--)
-			rra(data);
+		while (data->a.top != index)
+			ra(data);
 	}
 }
+
 
 

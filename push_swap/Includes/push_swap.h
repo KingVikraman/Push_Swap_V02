@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:13:58 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/11 21:09:00 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:44:26 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -83,19 +83,9 @@ void	sort_three(t_push_swap *data);
 int		find_lowest_index(t_push_swap *data);
 void 	move_to_top_a(t_push_swap *data, int index);
 void	use_hardcoded_sort(t_push_swap *data, int count);
-void 	use_advanced_sort(t_push_swap *data, int count);
-void restore_original_values(t_push_swap *data, int *sorted_original);
 
 
-bool 	is_empty(t_stack s);
-void	index_stack(t_push_swap *data);
-void	chunk_sort(t_push_swap *data);
-int 	find_max_position(t_stack *s);
-void 	smart_rotate_b(t_push_swap *data, int pos);
-int     find_in_chunk(t_stack a, int chunk_start, int chunk_end);
-void    bubble_sort(int *arr, int size);
-
-
+void	index_stack(t_stack *a);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:52:07 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/10 00:17:02 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:44:44 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -59,7 +59,7 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 	else
 	{
 		printf("Hello");
-	 	use_advanced_sort(data, count);
+	 	index_stack(&data->a);
 	}
 	
 	print_stack_a(&data->a, 'a');
