@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:36:00 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/14 13:57:03 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:39:12 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -95,23 +95,20 @@ void radix_sort(t_push_swap *data)
 
 void lsb_pass(t_push_swap *data, int bit)
 {
-    int i = 0;
-    while (i <= data->a.top)
-    {
-        if ((data->a.numbers[i] >> bit) & 1)
+    int len = data->a.top + 1;
+    while (len--) {
+        if ((data->a.numbers[0] >> bit) & 1)
             ra(data);
         else
             pb(data);
-        i++;
     }
 }
 
 void msb_pass(t_push_swap *data, int bit)
 {
     int i = data->a.top;
-    while (i >= 0)
-    {
-        if ((data->a.numbers[i] >> bit) & 1)
+    while (i >= 0) {
+        if ((data->a.numbers[data->a.top] >> bit) & 1)
             rra(data);
         else
             pb(data);
@@ -122,8 +119,7 @@ void msb_pass(t_push_swap *data, int bit)
 
 void smart_merge(t_push_swap *data)
 {
-    while (data->b.top >= 0)
-    {
+    while (data->b.top >= 0) {
         int closest = find_closest_to_top(data);
         rotate_to_top_b(data, closest);
         pa(data);
