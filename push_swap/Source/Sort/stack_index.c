@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:36:00 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/14 14:39:12 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:34:08 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -99,8 +99,12 @@ void lsb_pass(t_push_swap *data, int bit)
     while (len--) {
         if ((data->a.numbers[0] >> bit) & 1)
             ra(data);
-        else
+        else {
             pb(data);
+            // Rotate Stack B if needed (e.g., to keep largest at top)
+            if (data->b.top > 0 && data->b.numbers[0] < data->b.numbers[1])
+                rb(data);
+        }
     }
 }
 
@@ -110,8 +114,12 @@ void msb_pass(t_push_swap *data, int bit)
     while (i >= 0) {
         if ((data->a.numbers[data->a.top] >> bit) & 1)
             rra(data);
-        else
+        else {
             pb(data);
+            // Optional: Rotate Stack B here too
+            if (data->b.top > 0 && data->b.numbers[0] < data->b.numbers[1])
+                rb(data);
+        }
         i--;
     }
 }
