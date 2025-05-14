@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:52:07 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/13 18:44:44 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:03:16 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -53,6 +53,7 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 	print_stack_b(&data->b, 'b');
 	if (count <= 5)
 	{
+		printf("%d\n", count);
 		use_hardcoded_sort(data, count);
 		printf("Hello2");
 	}
@@ -60,6 +61,7 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 	{
 		printf("Hello");
 	 	index_stack(&data->a);
+		radix_sort(data);
 	}
 	
 	print_stack_a(&data->a, 'a');

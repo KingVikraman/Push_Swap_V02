@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:13:58 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/13 18:44:26 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/14 13:57:08 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -85,8 +85,15 @@ void 	move_to_top_a(t_push_swap *data, int index);
 void	use_hardcoded_sort(t_push_swap *data, int count);
 
 
-void	index_stack(t_stack *a);
-
+void swap(int *a, int *b);
+void index_stack(t_stack *a);
+void radix_sort(t_push_swap *data);
+void smart_merge(t_push_swap *data);
+void msb_pass(t_push_swap *data, int bit);
+void lsb_pass(t_push_swap *data, int bit);
+int find_position(t_stack stack, int num);
+int find_closest_to_top(t_push_swap *data);
+void rotate_to_top_b(t_push_swap *data, int num);
 
 
 
