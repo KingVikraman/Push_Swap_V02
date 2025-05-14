@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:36:00 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/14 15:34:08 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:44:11 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -17,10 +17,10 @@ void swap(int *a, int *b);
 void index_stack(t_stack *a);
 void radix_sort(t_push_swap *data);
 void smart_merge(t_push_swap *data);
+int find_max_position(t_stack stack);
 void msb_pass(t_push_swap *data, int bit);
 void lsb_pass(t_push_swap *data, int bit);
 int find_position(t_stack stack, int num);
-int find_closest_to_top(t_push_swap *data);
 void rotate_to_top_b(t_push_swap *data, int num);
 
 
@@ -82,12 +82,8 @@ void radix_sort(t_push_swap *data)
         max_bits++;
 
     int bit = 0;
-    while (bit < max_bits)
-    {
-        if (bit % 2 == 0)
-            lsb_pass(data, bit);
-        else
-            msb_pass(data, bit);
+    while (bit < max_bits) {
+        lsb_pass(data, bit); // Always use LSB pass
         bit++;
     }
     smart_merge(data);
@@ -99,12 +95,8 @@ void lsb_pass(t_push_swap *data, int bit)
     while (len--) {
         if ((data->a.numbers[0] >> bit) & 1)
             ra(data);
-        else {
-            pb(data);
-            // Rotate Stack B if needed (e.g., to keep largest at top)
-            if (data->b.top > 0 && data->b.numbers[0] < data->b.numbers[1])
-                rb(data);
-        }
+        else
+            pb(data); // No rotation after pb
     }
 }
 
@@ -125,27 +117,39 @@ void msb_pass(t_push_swap *data, int bit)
 }
 
 
-void smart_merge(t_push_swap *data)
+void smart_merge(t_push_swap *data) 
 {
     while (data->b.top >= 0) {
-        int closest = find_closest_to_top(data);
-        rotate_to_top_b(data, closest);
+        int max_pos = find_max_position(data->b);
+        rotate_to_top_b(data, data->b.numbers[max_pos]);
         pa(data);
     }
 }
 
-int find_closest_to_top(t_push_swap *data)
+int find_max_position(t_stack stack)
 {
-    int i = data->b.top;
-    int closest = data->b.numbers[i];
-    while (i >= 0)
-    {
-        if (data->b.numbers[i] > closest)
-            closest = data->b.numbers[i];
-        i--;
+    int max_pos = 0;
+    int i = 1;
+    while (i <= stack.top) {
+        if (stack.numbers[i] > stack.numbers[max_pos])
+            max_pos = i;
+        i++;
     }
-    return closest;  
-}  
+    return max_pos;
+}
+
+// int find_closest_to_top(t_push_swap *data)
+// {
+//     int i = data->b.top;
+//     int closest = data->b.numbers[i];
+//     while (i >= 0)
+//     {
+//         if (data->b.numbers[i] > closest)
+//             closest = data->b.numbers[i];
+//         i--;
+//     }
+//     return closest;  
+// }  
 
 void rotate_to_top_b(t_push_swap *data, int num)
 {

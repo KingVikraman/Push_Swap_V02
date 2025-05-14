@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 18:11:25 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/13 12:01:12 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/14 17:02:20 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -55,27 +55,21 @@ int		find_lowest_index(t_push_swap *data)
 	return index;
 }
 
-void	move_to_top_a(t_push_swap *data, int index)
+void move_to_top_a(t_push_swap *data, int index)
 {
-	int size;
-	int top;
+    int size = stack_size(data->a);
+    int target_value = data->a.numbers[index]; // Store the target value
 
-	size = stack_size(data->a);
-	top = data->a.top;
-
-	if (index >= size / 2)
-	{
-		while (data->a.top != index)
-		{
-			printf("%d,%d\n", data->a.top, index);
-			rra(data);
-		}
-	}
-	else
-	{
-		while (data->a.top != index)
-			ra(data);
-	}
+    if (index >= size / 2)
+    {
+        while (data->a.numbers[data->a.top] != target_value)
+            rra(data);
+    }
+    else
+    {
+        while (data->a.numbers[data->a.top] != target_value)
+            ra(data);
+    }
 }
 
 
