@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:52:07 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/16 12:46:39 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/16 20:19:11 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -24,13 +24,14 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 	t_push_swap *data;// <- custom struct made by me, in the header file.
 	int count;
 
-	count = argc -1;
 	if (argc < 2)								// -|
 	{											//  |_ This is the fucntion that help check 
 		ft_putstr_fd("Error\n", 1);		 //  |  if the arguments that are parsed in are valid
 		return (1);								// -|  or just the output file.
 	}
 	data = parse_check(argc, argv); // <- this function calls parse_check and pushes the ac and av data, then assigns that to the struct.
+	printf("AFTER PARSING:\n");
+	print_stack_a(&data->a, 'a');
 	if (!data || data->error)						//  -|
 	{												//	 |
 		ft_putstr_fd("Error2\n", 2);			 //	  |	
@@ -40,6 +41,7 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 		free(data);							//    |		and exits by returning (1).
 		return (1);									//  -|
 	}
+	count = data->a.size;
 	data->b.numbers = malloc(sizeof(int) * data->a.size);
 	data->b.size = data->a.size;
 	data->b.top = -1;
@@ -60,8 +62,8 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 	else
 	{
 		printf("Hello");
-	 	index_stack(&data->a);
-		optimized_sort(data);
+		index_stack(&data->a);
+		sort_large(data);
 	}
 	
 	print_stack_a(&data->a, 'a');
@@ -91,12 +93,13 @@ static void *	combine_args(int argc, char **argv)
 	if (!combined)
 		return (NULL);
 
-	i = argc;
-	while (--i >= 1)
+	i = 1;
+	while (i < argc)
 	{
 		ft_strlcat(combined, argv[i],total_len + 1);
-		if (i != argc)
+		if (i < argc - 1)
 			ft_strlcat(combined, " ", total_len + 1);
+		i++;
 	}
 	return (combined);
 }
@@ -151,24 +154,25 @@ t_push_swap *parse_check(int argc, char **argv)
 	//Parse numbers into stack A
 	data->error = 0;
 	i = -1;
-	while (count > ++i)
+	while (++i < count)
 	{
 		data->a.numbers[i] = ft_atoi(split[i], &data->error);
-		if (!data->error)
-		{
-			data->a.size = count;
-			data->a.top = count - 1;
-		}
-		else 
+		if (data->error)
 		{
 			data->a.size = 0;
 			data->a.top = -1;
+			ft_free_split(split);
+			free(data->a.numbers);
+			free(data->b.numbers);
+			free(data);
+			return (NULL);
 		}
 	}
+	data->a.size = count;
+	data->a.top = count - 1;
+
 	
 	// Set stack metadata
-	data->a.size = count;
-	data->a.top = count - 1;  // Top points to last element
 	data->b.size = count;
 	data->b.top = -1;         // Stack B starts empty
 

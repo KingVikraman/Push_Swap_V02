@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:13:58 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/16 12:45:47 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/16 21:14:56 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -36,6 +36,12 @@ typedef struct s_push_swap{
 	int error;
 	struct s_stack *pile;
 } t_push_swap;
+
+typedef struct s_move {
+    int cost;
+    int rot_a;
+    int rot_b;
+} t_move;
 
 // ~~~~ Parsing Funtion ~~~~~
 t_push_swap	*parse_check(int argc, char **argv);
@@ -85,16 +91,20 @@ void 	move_to_top_a(t_push_swap *data, int index);
 void	use_hardcoded_sort(t_push_swap *data, int count);
 
 
+int ft_abs(int num);
 void swap(int *a, int *b);
 void index_stack(t_stack *a);
-int find_max_position(t_stack stack);
-void optimized_sort(t_push_swap *data);
-int find_position(t_stack stack, int num);
-void rotate_to_top_b(t_push_swap *data, int num);
-void rotate_to_top_a(t_push_swap *data, int num);
-int find_closest_in_range(t_stack stack, int start, int end);
-
-
+int get_max_bits(t_stack *stack);
+void sort_large(t_push_swap *data);
+int find_min_position(t_stack *a);
+void bubble_sort(int *arr, int size);
+void move_to_top(t_push_swap *data, int min_pos);
+int get_rotation_count(t_stack *s, int pos);
+int find_target_position(t_push_swap *data, int num);
+t_move find_cheapest_move(t_push_swap *data);
+void execute_cheapest_move(t_push_swap *data, t_move move);
+int calculate_cost(int a_rot, int b_rot);
+void align_stack_a(t_push_swap *data);;
 
 
 #endif

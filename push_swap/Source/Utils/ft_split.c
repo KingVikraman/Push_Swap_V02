@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:26:41 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/08 12:34:10 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/16 18:06:59 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -47,7 +47,7 @@ static char	*word_dup(const char *s, int start, int end)
 	return (word);
 }
 
-char	**ft_split(const char *s, char c)
+char **ft_split(const char *s, char c)
 {
 	char	**res;
 	int		i = 0, j = 0, start = -1;
@@ -59,11 +59,12 @@ char	**ft_split(const char *s, char c)
 	res = malloc(sizeof(char *) * (words + 1));
 	if (!res)
 		return (NULL);
+
 	while (s[i])
 	{
 		if (s[i] != c && start == -1)
 			start = i;
-		else if ((s[i] == c || (s[i + 1] == '\0' && s[i] != c)) && start != -1)
+		if ((s[i] == c || s[i + 1] == '\0') && start != -1)
 		{
 			if (s[i] == c)
 				res[j++] = word_dup(s, start, i);
@@ -76,3 +77,4 @@ char	**ft_split(const char *s, char c)
 	res[j] = NULL;
 	return (res);
 }
+
