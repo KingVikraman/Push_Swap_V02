@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:36:00 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/16 21:18:33 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/16 22:01:35 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -141,7 +141,8 @@ void sort_large(t_push_swap *data) {
             j++;
         }
         // Push all from b back to a
-        while (data->b.size > 0) {
+        while (data->b.size > 0)
+        {
             pa(data);
         }
         i++;
