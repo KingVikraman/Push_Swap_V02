@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:36:00 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/14 16:44:11 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:46:13 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -15,55 +15,46 @@
 
 void swap(int *a, int *b);
 void index_stack(t_stack *a);
-void radix_sort(t_push_swap *data);
-void smart_merge(t_push_swap *data);
 int find_max_position(t_stack stack);
-void msb_pass(t_push_swap *data, int bit);
-void lsb_pass(t_push_swap *data, int bit);
+void optimized_sort(t_push_swap *data);
 int find_position(t_stack stack, int num);
 void rotate_to_top_b(t_push_swap *data, int num);
+void rotate_to_top_a(t_push_swap *data, int num);
+int find_closest_in_range(t_stack stack, int start, int end);
 
 
 
 
-void index_stack(t_stack *a)
-{
-    int *sorted;
-    int size = a->top + 1;
-    sorted = malloc(sizeof(int) * size);
+
+void index_stack(t_stack *a) {
+    int *sorted = malloc(sizeof(int) * (a->top + 1));
     if (!sorted) return;
-
-    // Copy values (no for loop)  
+    
+    // Copy values
     int i = 0;
-    while (i < size)
-    {
+    while (i <= a->top) {
         sorted[i] = a->numbers[i];
         i++;
     }
-
-    // Bubble sort (no for loop)  
+    
+    // Bubble sort without for
     i = 0;
-    while (i < size - 1)
-    {
+    while (i <= a->top) {
         int j = 0;
-        while (j < size - i - 1)
-        {
-            if (sorted[j] > sorted[j + 1])
-                swap(&sorted[j], &sorted[j + 1]);
+        while (j < a->top - i) {
+            if (sorted[j] > sorted[j+1])
+                swap(&sorted[j], &sorted[j+1]);
             j++;
         }
         i++;
     }
-
-    // Replace with indexes (no for loop)  
+    
+    // Replace with indexes
     i = 0;
-    while (i < size)
-    {
+    while (i <= a->top) {
         int j = 0;
-        while (j < size)
-        {
-            if (a->numbers[i] == sorted[j])
-            {
+        while (j <= a->top) {
+            if (a->numbers[i] == sorted[j]) {
                 a->numbers[i] = j;
                 break;
             }
@@ -74,51 +65,26 @@ void index_stack(t_stack *a)
     free(sorted);
 }
 
-void radix_sort(t_push_swap *data)
-{
-    int max_bits = 0;
-    int max_num = data->a.numbers[data->a.top];
-    while ((max_num >> max_bits) != 0)
-        max_bits++;
-
-    int bit = 0;
-    while (bit < max_bits) {
-        lsb_pass(data, bit); // Always use LSB pass
-        bit++;
-    }
-    smart_merge(data);
-}
-
-void lsb_pass(t_push_swap *data, int bit)
-{
-    int len = data->a.top + 1;
-    while (len--) {
-        if ((data->a.numbers[0] >> bit) & 1)
-            ra(data);
-        else
-            pb(data); // No rotation after pb
-    }
-}
-
-void msb_pass(t_push_swap *data, int bit)
-{
-    int i = data->a.top;
-    while (i >= 0) {
-        if ((data->a.numbers[data->a.top] >> bit) & 1)
-            rra(data);
-        else {
+// For-loop-free optimized sort
+void optimized_sort(t_push_swap *data) {
+    int chunk_size = (data->a.top + 1) / 5;
+    int chunk_start = 0;
+    
+    // Phase 1: Push chunks to B
+    while (chunk_start <= data->a.top) {
+        int chunk_end = chunk_start + chunk_size;
+        while (1) {
+            int closest = find_closest_in_range(data->a, chunk_start, chunk_end);
+            if (closest == -1) break;
+            rotate_to_top_a(data, closest);
             pb(data);
-            // Optional: Rotate Stack B here too
             if (data->b.top > 0 && data->b.numbers[0] < data->b.numbers[1])
                 rb(data);
         }
-        i--;
+        chunk_start += chunk_size;
     }
-}
-
-
-void smart_merge(t_push_swap *data) 
-{
+    
+    // Phase 2: Merge back to A
     while (data->b.top >= 0) {
         int max_pos = find_max_position(data->b);
         rotate_to_top_b(data, data->b.numbers[max_pos]);
@@ -126,10 +92,29 @@ void smart_merge(t_push_swap *data)
     }
 }
 
-int find_max_position(t_stack stack)
-{
+// For-loop-free helpers
+int find_closest_in_range(t_stack stack, int start, int end) {
+    int closest_pos = -1;
+    int min_dist = INT_MAX;
+    int i = 0;
+    
+    while (i <= stack.top) {
+        if (stack.numbers[i] >= start && stack.numbers[i] <= end) {
+            int dist = abs(i - stack.top / 2);
+            if (dist < min_dist) {
+                min_dist = dist;
+                closest_pos = i;
+            }
+        }
+        i++;
+    }
+    return closest_pos;
+}
+
+int find_max_position(t_stack stack) {
     int max_pos = 0;
     int i = 1;
+    
     while (i <= stack.top) {
         if (stack.numbers[i] > stack.numbers[max_pos])
             max_pos = i;
@@ -138,50 +123,45 @@ int find_max_position(t_stack stack)
     return max_pos;
 }
 
-// int find_closest_to_top(t_push_swap *data)
-// {
-//     int i = data->b.top;
-//     int closest = data->b.numbers[i];
-//     while (i >= 0)
-//     {
-//         if (data->b.numbers[i] > closest)
-//             closest = data->b.numbers[i];
-//         i--;
-//     }
-//     return closest;  
-// }  
+// Rotation functions (unchanged)
+void rotate_to_top_a(t_push_swap *data, int index) {
+    int target = data->a.numbers[index];
+    int size = data->a.top + 1;
+    
+    if (index > size / 2) {
+        while (data->a.numbers[data->a.top] != target)
+            rra(data);
+    } else {
+        while (data->a.numbers[data->a.top] != target)
+            ra(data);
+    }
+}
 
-void rotate_to_top_b(t_push_swap *data, int num)
-{
+void rotate_to_top_b(t_push_swap *data, int num) {
     int pos = find_position(data->b, num);
-    int mid = data->b.top / 2;
-    if (pos > mid)
-    {
+    int size = data->b.top + 1;
+    
+    if (pos > size / 2) {
         while (data->b.numbers[data->b.top] != num)
             rrb(data);
-    }
-    else
-    {
+    } else {
         while (data->b.numbers[data->b.top] != num)
             rb(data);
     }
 }
 
-int find_position(t_stack stack, int num)
-{
+int find_position(t_stack stack, int num) {
     int i = 0;
-    while (i <= stack.top) {  // Loop until we reach the top of the stack
-        if (stack.numbers[i] == num) {
-            return i;  // Return the position if found
-        }
+    while (i <= stack.top) {
+        if (stack.numbers[i] == num)
+            return i;
         i++;
     }
-    return -1;  // Return -1 if the number is not found
+    return -1;
 }
 
-void swap(int *a, int *b)
-{
-    int temp = *a;  // Store value at address `a`
-    *a = *b;        // Overwrite value at `a` with value at `b`
-    *b = temp;      // Put original `a` value into `b`
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
