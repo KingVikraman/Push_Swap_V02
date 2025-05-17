@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:48:36 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/08 12:30:29 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/17 21:08:31 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,14 +14,24 @@
 void    pb(t_push_swap *data);
 
 
-void    pb(t_push_swap *data)
+// void    pb(t_push_swap *data)
+// {
+// 	if (data->a.top == -1)
+// 		return ;
+
+// 	data->b.top++;
+// 	data->b.numbers[data->b.top] = data->a.numbers[data->a.top];
+// 	data->a.top--;
+
+// 	ft_putstr_fd("pb\n", 1);
+// }
+
+void pb(t_push_swap *data)
 {
-	if (data->a.top == -1)
-		return ;
+    if (data->a.top < 0)
+        return;
 
-	data->b.top++;
-	data->b.numbers[data->b.top] = data->a.numbers[data->a.top];
-	data->a.top--;
-
-	ft_putstr_fd("pb\n", 1);
+    data->b.numbers[++data->b.top] = data->a.numbers[data->a.top--];
+    ft_putstr_fd("pb\n", 1);
 }
+

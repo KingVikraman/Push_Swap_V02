@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 22:03:49 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/16 22:03:59 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/17 21:54:50 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -17,7 +17,7 @@
 typedef struct s_stack {
     int *numbers;
     int size;
-    int top; // typically top = size - 1
+    // int top; // typically top = size - 1
 } t_stack;
 
 typedef struct s_push_swap {
@@ -287,35 +287,35 @@ t_move find_cheapest_move(t_push_swap *data) {
 }
 
 // Execute rotations and push based on cheapest move
-void execute_cheapest_move(t_push_swap *data, t_move move) {
-    while (move.rot_a > 0 && move.rot_b > 0) {
-        rr(data);
-        move.rot_a--;
-        move.rot_b--;
-    }
-    while (move.rot_a < 0 && move.rot_b < 0) {
-        rrr(data);
-        move.rot_a++;
-        move.rot_b++;
-    }
-    while (move.rot_a > 0) {
-        ra(data);
-        move.rot_a--;
-    }
-    while (move.rot_a < 0) {
-        rra(data);
-        move.rot_a++;
-    }
-    while (move.rot_b > 0) {
-        rb(data);
-        move.rot_b--;
-    }
-    while (move.rot_b < 0) {
-        rrb(data);
-        move.rot_b++;
-    }
-    pa(data);
-}
+// void execute_cheapest_move(t_push_swap *data, t_move move) {
+//     while (move.rot_a > 0 && move.rot_b > 0) {
+//         rr(data);
+//         move.rot_a--;
+//         move.rot_b--;
+//     }
+//     while (move.rot_a < 0 && move.rot_b < 0) {
+//         rrr(data);
+//         move.rot_a++;
+//         move.rot_b++;
+//     }
+//     while (move.rot_a > 0) {
+//         ra(data);
+//         move.rot_a--;
+//     }
+//     while (move.rot_a < 0) {
+//         rra(data);
+//         move.rot_a++;
+//     }
+//     while (move.rot_b > 0) {
+//         rb(data); 
+//         move.rot_b--;
+//     }
+//     while (move.rot_b < 0) {
+//         rrb(data);
+//         move.rot_b++;
+//     }
+//     pa(data);
+// }
 
 // Move the smallest element in a to the top by rotating stack a
 void move_to_top_a(t_push_swap *data, int min_pos) {
@@ -359,8 +359,9 @@ void sort_large(t_push_swap *data) {
 }
 
 // Simple test runner
-int main(void) {
-    int nums[] = {5, 2, 9, 1, 6, 3};
+int main(void)
+{
+    int nums[] = { 49951, 33088, 48878, 43335, 21117, 45411 };
     t_push_swap ps;
     ps.a.size = 6;
     ps.a.numbers = malloc(sizeof(int) * ps.a.size);

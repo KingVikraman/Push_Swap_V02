@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:52:07 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/16 20:19:11 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/17 22:06:40 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -32,6 +32,7 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 	data = parse_check(argc, argv); // <- this function calls parse_check and pushes the ac and av data, then assigns that to the struct.
 	printf("AFTER PARSING:\n");
 	print_stack_a(&data->a, 'a');
+	print_stack_b(&data->b, 'b');
 	if (!data || data->error)						//  -|
 	{												//	 |
 		ft_putstr_fd("Error2\n", 2);			 //	  |	
@@ -51,8 +52,8 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 		free(data);
 		return (0);
 	}
-	print_stack_a(&data->a, 'a');
-	print_stack_b(&data->b, 'b');
+	// print_stack_a(&data->a, 'a');
+	// print_stack_b(&data->b, 'b');
 	if (count <= 5)
 	{
 		printf("%d\n", count);
@@ -61,8 +62,10 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 	}
 	else
 	{
-		printf("Hello");
+		printf("Hello\n");
 		index_stack(&data->a);
+		print_stack_a(&data->a, 'a');
+		print_stack_b(&data->b, 'b');
 		sort_large(data);
 	}
 	

@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:36:00 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/16 22:01:35 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/17 22:52:20 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -25,7 +25,6 @@ int find_target_position(t_push_swap *data, int num);
 t_move find_cheapest_move(t_push_swap *data);
 void execute_cheapest_move(t_push_swap *data, t_move move);
 int calculate_cost(int a_rot, int b_rot);
-void align_stack_a(t_push_swap *data);
 
 
 
@@ -94,20 +93,6 @@ void bubble_sort(int *arr, int size)
     }
 }
 
-void align_stack_a(t_push_swap *data)
-{
-    int min_pos = find_min_position(&data->a);
-    int rotations = get_rotation_count(&data->a, min_pos);
-    
-    while (rotations > 0) {
-        ra(data);
-        rotations--;
-    }
-    while (rotations < 0) {
-        rra(data);
-        rotations++;
-    }
-}
 
 
 int get_max_bits(t_stack *stack)
@@ -125,29 +110,27 @@ int get_max_bits(t_stack *stack)
     return max_bits;
 }
 
-void sort_large(t_push_swap *data) {
-    index_stack(&data->a); // replace numbers by their indices for radix sort
-    int max_bits = get_max_bits(&data->a);
-    int i = 0;
-    while (i < max_bits) {
-        int count = data->a.size;
-        int j = 0;
-        while (j < count) {
-            if (((data->a.numbers[0] >> i) & 1) == 1) {
-                ra(data);
-            } else {
-                pb(data);
-            }
-            j++;
-        }
-        // Push all from b back to a
-        while (data->b.size > 0)
-        {
-            pa(data);
-        }
-        i++;
+void sort_large(t_push_swap *data)
+{
+   
+    // Step 1: Push all but top 3 to B
+    while (data->a.top + 1 > 3)
+        pb(data);
+
+    // Step 2: Sort the remaining 3 elements in A
+    sort_three(data);  // You must implement this (for 3 values)
+
+    // Step 3: While B is not empty, move elements back to A using cheapest move
+    while (data->b.top >= 0)
+    {
+        printf("HERE\n");
+        //fix here...
+        t_move best = find_cheapest_move(data);
+        execute_cheapest_move(data, best);
     }
-    // After sorting indices, ensure smallest element is on top
+
+    // Step 4: Final rotation to put smallest element at the top
+    printf("FINAL\n");
     int min_pos = find_min_position(&data->a);
     move_to_top(data, min_pos);
 }
@@ -270,7 +253,5 @@ int find_target_position(t_push_swap *data, int num)
 
 int ft_abs(int num)
 {
-    if (num < 0)
-        return (-num);
-    return (num);
+    return (num < 0) ? -num : num;
 }

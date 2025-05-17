@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:13:58 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/16 21:14:56 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/17 20:11:59 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -104,7 +104,6 @@ int find_target_position(t_push_swap *data, int num);
 t_move find_cheapest_move(t_push_swap *data);
 void execute_cheapest_move(t_push_swap *data, t_move move);
 int calculate_cost(int a_rot, int b_rot);
-void align_stack_a(t_push_swap *data);;
 
 
 #endif
