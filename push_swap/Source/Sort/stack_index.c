@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:36:00 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/17 22:52:20 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/25 00:10:42 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -112,18 +112,40 @@ int get_max_bits(t_stack *stack)
 
 void sort_large(t_push_swap *data)
 {
-   
+    print_stack_a(&data->a, 'a');
+	print_stack_b(&data->b, 'b');
+    printf("_______________________\n");
     // Step 1: Push all but top 3 to B
     while (data->a.top + 1 > 3)
+    {
+        print_stack_a(&data->a, 'a');
+	    print_stack_b(&data->b, 'b');
+        printf("_______________________\n");
+        printf("this is a.value :%d\n", data->a.numbers[data->a.top]);
+        printf("this is a.top : %d\n", data->a.top);
+        printf("this is b.value : %d\n", data->b.numbers[data->b.top]);
+        printf("this is b.top : %d\n", data->b.top);
         pb(data);
-
+    }
+    printf("this is a.top :%d\n", data->a.top);
+    printf("this is b.top : %d\n", data->b.top);
     // Step 2: Sort the remaining 3 elements in A
     sort_three(data);  // You must implement this (for 3 values)
 
+    print_stack_a(&data->a, 'a');
+	print_stack_b(&data->b, 'b');
+    printf("_______________________\n");
+    printf("this is a.value :%d\n", data->a.numbers[data->a.top]);
+    printf("this is b.value : %d\n", data->b.numbers[data->b.top]);
     // Step 3: While B is not empty, move elements back to A using cheapest move
     while (data->b.top >= 0)
     {
         printf("HERE\n");
+        print_stack_a(&data->a, 'a');
+	    print_stack_b(&data->b, 'b');
+        printf("_______________________\n");
+        printf("this is a.value :%d\n", data->a.numbers[data->a.top]);
+        printf("this is b.value : %d\n", data->b.numbers[data->b.top]);
         //fix here...
         t_move best = find_cheapest_move(data);
         execute_cheapest_move(data, best);
@@ -140,7 +162,8 @@ int find_min_position(t_stack *a)
     int min_pos = 0;
     int i = 1;
     while (i < a->size) {
-        if (a->numbers[i] < a->numbers[min_pos]) {
+        if (a->numbers[i] > a->numbers[min_pos])
+        {
             min_pos = i;
         }
         i++;
@@ -157,7 +180,7 @@ int calculate_cost(int a_rot, int b_rot)
     }
     return abs_a + abs_b;
 }
-
+//Here got problem, raja babi pls fix it!!
 t_move find_cheapest_move(t_push_swap *data)
 {
     t_move cheapest = {INT_MAX, 0, 0};
@@ -237,7 +260,8 @@ int find_target_position(t_push_swap *data, int num)
     int pos = -1;
     int min_greater = INT_MAX;
     while (i < data->a.size) {
-        if (data->a.numbers[i] > num && data->a.numbers[i] < min_greater) {
+        if (data->a.numbers[i] > num && data->a.numbers[i] < min_greater)
+        {
             min_greater = data->a.numbers[i];
             pos = i;
         }
@@ -246,6 +270,9 @@ int find_target_position(t_push_swap *data, int num)
     if (pos == -1) {
         // no number greater, so put after min element
         pos = find_min_position(&data->a);
+        if (pos == 0) 
+            pos = data->a.size - 1;  // Wrap around
+        else pos--;
     }
     return pos;
 }

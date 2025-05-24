@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:52:07 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/17 22:06:40 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/24 22:56:12 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -159,7 +159,7 @@ t_push_swap *parse_check(int argc, char **argv)
 	i = -1;
 	while (++i < count)
 	{
-		data->a.numbers[i] = ft_atoi(split[i], &data->error);
+		data->a.numbers[i] = ft_atoi(split[count - i - 1], &data->error);
 		if (data->error)
 		{
 			data->a.size = 0;

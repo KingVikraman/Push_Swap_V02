@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:48:27 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/08 12:32:46 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/24 23:48:55 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -42,12 +42,12 @@ void    print_stack_b(t_stack *pile , char name)
         return ;
     }
 
-    i = pile->top;
-    while (i  >= 0)
+    i = 0;
+    while (i <= pile->top)
     {
         ft_putnbr_fd(pile->numbers[i], 1);
         ft_putchar_fd(' ', 1);
-        i--;
+        i++;
     }
     ft_putchar_fd('\n', 1);
 }
