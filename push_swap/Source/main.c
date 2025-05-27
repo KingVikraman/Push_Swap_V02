@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:52:07 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/25 23:35:56 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/27 21:24:00 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -19,25 +19,22 @@ static void *combine_args(int argc, char **argv);
 int		main(int argc, char **argv);
 
 
-int		main(int argc, char **argv) //<- Parses in a argument count and vector.
+int		main(int argc, char **argv)
 {
 	t_push_swap *data;// <- custom struct made by me, in the header file.
 	int count;
 
 	if (argc < 2)								// -|
-	{											//  |_ This is the fucntion that help check 
+	{											//  |_ This is the fucntion that help check
 		ft_putstr_fd("Error\n", 1);		 //  |  if the arguments that are parsed in are valid
 		return (1);								// -|  or just the output file.
 	}
 	data = parse_check(argc, argv); // <- this function calls parse_check and pushes the ac and av data, then assigns that to the struct.
-	//printf("AFTER PARSING:\n");
-	// print_stack_a(&data->a, 'a');
-	// print_stack_b(&data->b, 'b');
 	if (!data || data->error)						//  -|
 	{												//	 |
-		ft_putstr_fd("Error2\n", 2);			 //	  |	
+		ft_putstr_fd("Error2\n", 2);			 //	  |
 		if (data)									//   |____This fucntion is the function that checks weather in the data
-			free(data->a.numbers);				//    | 	assigning part got any errors or not then prints out the 
+			free(data->a.numbers);				//    | 	assigning part got any errors or not then prints out the
 		free(data->b.numbers);					//    |		error in the terminal, free the data to prevent memory leaks
 		free(data);							//    |		and exits by returning (1).
 		return (1);									//  -|
@@ -52,36 +49,18 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 		free(data);
 		return (0);
 	}
-	// print_stack_a(&data->a, 'a');
-	// print_stack_b(&data->b, 'b');
 	if (count <= 5)
-	{
-		//printf("%d\n", count);
-		printf("Hello2");
 		use_hardcoded_sort(data, count);
-		
-	}
 	else
-	{
-		printf("Hello\n");
-		index_stack(&data->a);
-		// print_stack_a(&data->a, 'a');
-		// print_stack_b(&data->b, 'b');
 		sort_large(data);
-	}
-	
-	// print_stack_a(&data->a, 'a');
-	// print_stack_b(&data->b, 'b');
-
 	free(data->a.numbers);
 	free(data->b.numbers);
 	free(data);
 	return (0);
-
 }
 
 
-static void *	combine_args(int argc, char **argv)
+static void *combine_args(int argc, char **argv)
 {
 	char	*combined;
 	size_t	total_len;

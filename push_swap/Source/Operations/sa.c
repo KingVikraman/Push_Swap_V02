@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:48:18 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/08 12:30:49 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/27 22:27:54 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -57,18 +57,4 @@ void    print_stack_a(t_stack *pile, char name)
     ft_putchar_fd('\n', 1);
 }
 
-// void print_stack_a(t_push_swap *data)
-// {
-//     printf("Stack A:\n");
 
-//     if (data->a.top == -1)
-//     {
-//         printf("[empty]\n");
-//         return;
-//     }
-
-//     for (int i = data->a.top; i >= 0; i--)
-//     {
-//         printf("%d\n", data->a.numbers[i]);
-//     }
-// }
