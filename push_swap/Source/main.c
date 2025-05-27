@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:52:07 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/24 22:56:12 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/25 23:35:56 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -30,9 +30,9 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 		return (1);								// -|  or just the output file.
 	}
 	data = parse_check(argc, argv); // <- this function calls parse_check and pushes the ac and av data, then assigns that to the struct.
-	printf("AFTER PARSING:\n");
-	print_stack_a(&data->a, 'a');
-	print_stack_b(&data->b, 'b');
+	//printf("AFTER PARSING:\n");
+	// print_stack_a(&data->a, 'a');
+	// print_stack_b(&data->b, 'b');
 	if (!data || data->error)						//  -|
 	{												//	 |
 		ft_putstr_fd("Error2\n", 2);			 //	  |	
@@ -44,7 +44,7 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 	}
 	count = data->a.size;
 	data->b.numbers = malloc(sizeof(int) * data->a.size);
-	data->b.size = data->a.size;
+	data->b.size = 0;
 	data->b.top = -1;
 	if (is_sorted(&data->a))
 	{
@@ -56,21 +56,22 @@ int		main(int argc, char **argv) //<- Parses in a argument count and vector.
 	// print_stack_b(&data->b, 'b');
 	if (count <= 5)
 	{
-		printf("%d\n", count);
-		use_hardcoded_sort(data, count);
+		//printf("%d\n", count);
 		printf("Hello2");
+		use_hardcoded_sort(data, count);
+		
 	}
 	else
 	{
 		printf("Hello\n");
 		index_stack(&data->a);
-		print_stack_a(&data->a, 'a');
-		print_stack_b(&data->b, 'b');
+		// print_stack_a(&data->a, 'a');
+		// print_stack_b(&data->b, 'b');
 		sort_large(data);
 	}
 	
-	print_stack_a(&data->a, 'a');
-	print_stack_b(&data->b, 'b');
+	// print_stack_a(&data->a, 'a');
+	// print_stack_b(&data->b, 'b');
 
 	free(data->a.numbers);
 	free(data->b.numbers);

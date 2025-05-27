@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:36:00 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/25 00:10:42 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:07:45 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -112,63 +112,55 @@ int get_max_bits(t_stack *stack)
 
 void sort_large(t_push_swap *data)
 {
-    print_stack_a(&data->a, 'a');
-	print_stack_b(&data->b, 'b');
-    printf("_______________________\n");
-    // Step 1: Push all but top 3 to B
+    // print_stack_a(&data->a, 'a');
+	// print_stack_b(&data->b, 'b');
+    // printf("_______________________\n");
+
+    //Step 1: Push all but top 3 to B
     while (data->a.top + 1 > 3)
     {
-        print_stack_a(&data->a, 'a');
-	    print_stack_b(&data->b, 'b');
-        printf("_______________________\n");
-        printf("this is a.value :%d\n", data->a.numbers[data->a.top]);
-        printf("this is a.top : %d\n", data->a.top);
-        printf("this is b.value : %d\n", data->b.numbers[data->b.top]);
-        printf("this is b.top : %d\n", data->b.top);
         pb(data);
+       // print_stack_a(&data->a, 'a');
+	  //  print_stack_b(&data->b, 'b');
+       // printf("_______________________\n");
     }
-    printf("this is a.top :%d\n", data->a.top);
-    printf("this is b.top : %d\n", data->b.top);
     // Step 2: Sort the remaining 3 elements in A
     sort_three(data);  // You must implement this (for 3 values)
 
-    print_stack_a(&data->a, 'a');
-	print_stack_b(&data->b, 'b');
-    printf("_______________________\n");
-    printf("this is a.value :%d\n", data->a.numbers[data->a.top]);
-    printf("this is b.value : %d\n", data->b.numbers[data->b.top]);
+
     // Step 3: While B is not empty, move elements back to A using cheapest move
     while (data->b.top >= 0)
     {
-        printf("HERE\n");
-        print_stack_a(&data->a, 'a');
-	    print_stack_b(&data->b, 'b');
-        printf("_______________________\n");
-        printf("this is a.value :%d\n", data->a.numbers[data->a.top]);
-        printf("this is b.value : %d\n", data->b.numbers[data->b.top]);
         //fix here...
         t_move best = find_cheapest_move(data);
         execute_cheapest_move(data, best);
+        //
+        //print_stack_a(&data->a, 'a');
+	    //print_stack_b(&data->b, 'b');
+       // printf("_______________________\n");
     }
 
     // Step 4: Final rotation to put smallest element at the top
-    printf("FINAL\n");
+   // printf("FINAL\n");
     int min_pos = find_min_position(&data->a);
     move_to_top(data, min_pos);
+   //  printf("HERE\n");
+   // print_stack_a(&data->a, 'a');
+   // print_stack_b(&data->b, 'b');
+   // printf("_______________________\n");
 }
 
 int find_min_position(t_stack *a)
 {
-    int min_pos = 0;
+    int max_pos = 0;
     int i = 1;
-    while (i < a->size) {
-        if (a->numbers[i] > a->numbers[min_pos])
-        {
-            min_pos = i;
-        }
+    while (i < a->size)
+    {
+       if (a->numbers[i] < a->numbers[max_pos])
+            max_pos = i;
         i++;
     }
-    return min_pos;
+    return max_pos;
 }
 
 int calculate_cost(int a_rot, int b_rot)
@@ -212,19 +204,19 @@ void execute_cheapest_move(t_push_swap *data, t_move move)
         move.rot_b++;
     }
     while (move.rot_a > 0) {
-        ra(data);
+        ra(data, 1);
         move.rot_a--;
     }
     while (move.rot_a < 0) {
-        rra(data);
+        rra(data, 1);
         move.rot_a++;
     }
     while (move.rot_b > 0) {
-        rb(data);
+        rb(data,1);
         move.rot_b--;
     }
     while (move.rot_b < 0) {
-        rrb(data);
+        rrb(data,1);
         move.rot_b++;
     }
     pa(data);
@@ -236,22 +228,23 @@ void move_to_top(t_push_swap *data, int min_pos)
 {
     int rotations = get_rotation_count(&data->a, min_pos);
     while (rotations > 0) {
-        ra(data);
+        ra(data, 1);
         rotations--;
     }
     while (rotations < 0) {
-        rra(data);
+        rra(data, 1);
         rotations++;
     }
 }
 // Helper functions
 int get_rotation_count(t_stack *s, int pos)
 {
-    int half = s->size / 2;
-    if (pos <= half)
-        return pos; // rotate up pos times
+    pos++;
+    int half = (int)ceil((double)s->size / 2.0);
+    if (pos >= half)
+        return s->size - pos; 
     else
-        return pos - s->size; // negative means rotate down (reverse rotate)
+        return -1 * pos; 
 }
 
 int find_target_position(t_push_swap *data, int num)
@@ -270,9 +263,6 @@ int find_target_position(t_push_swap *data, int num)
     if (pos == -1) {
         // no number greater, so put after min element
         pos = find_min_position(&data->a);
-        if (pos == 0) 
-            pos = data->a.size - 1;  // Wrap around
-        else pos--;
     }
     return pos;
 }
@@ -282,3 +272,30 @@ int ft_abs(int num)
 {
     return (num < 0) ? -num : num;
 }
+
+
+/*
+1) Operation Modifications
+
+a) pa, pb 
+  - Added missing `size++` and `size--` adjustments.
+b) ra, rb, rra, rrb       
+  - Added a boolean parameter to disable printing.
+  - Printing should be disabled when called via `rr` or `rrr`
+
+2) main()
+  - data->b.size must be initialized to zero at the start
+
+3) get_rotation_count()
+  a) You're comparing s->size (counting positions from 1) to pos (zero-based index).
+     To get the correct amount of rotation use position-count
+     pos++ to align it with position s->size
+  b) To determine the correct half of the stack,  round to the nearest larger integer
+  c) Change condition from if (pos <= half) to if (pos >= half)
+  d) Amend the rotation count calculation accordingly
+
+4) find_target_position()
+ - If pos == -1, it means num is the largest value and should be placed on top the smallest number in stack A.
+   Use pos = find_min_position() for that.
+   The code following that condition becomes unnecessary and can be removed.
+*/

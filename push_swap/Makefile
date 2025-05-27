@@ -6,14 +6,14 @@
 #    By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/08 12:23:41 by rvikrama          #+#    #+#              #
-#    Updated: 2025/05/10 00:04:15 by rvikrama         ###   ########.fr        #
+#    Updated: 2025/05/27 15:14:58 by rvikrama         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME				= push_swap
 CC					= cc
 COMP				= -Wall -Werror -Wextra
-CFLAGS				= $(COMP)  -I$(INC_DIR)
+CFLAGS				= $(COMP) -I$(INC_DIR)
 RM					= rm -rf
 DEBUG				= -g3
 THREAD_DEBUG		= -fsanitize=thread
@@ -35,7 +35,7 @@ OBJS	:=	$(SRCS:%.c=bin/%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+		$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -lm
 
 bin/%.o: %.c
 	@mkdir -p $(dir $@)

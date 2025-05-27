@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:13:58 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/17 20:11:59 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/25 23:17:43 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -20,6 +20,7 @@
 # include <stddef.h>
 # include <string.h>
 # include <limits.h>
+# include <math.h>
 
 
 
@@ -56,10 +57,10 @@ void 	pa(t_push_swap *data);
 void 	pb(t_push_swap *data);
 
 // ~~~~ Rotate Operations ~~~~
-void	rb(t_push_swap *data);
-void	ra(t_push_swap *data);
-void	rra(t_push_swap *data);
-void    rrb(t_push_swap *data);
+void	rb(t_push_swap *data, int print);
+void	ra(t_push_swap *data, int print);
+void    rra(t_push_swap *data, int print);
+void    rrb(t_push_swap *data, int print);
 void	rrr(t_push_swap *data);
 void    rr(t_push_swap *data);
 

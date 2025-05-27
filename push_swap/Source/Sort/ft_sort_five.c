@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 18:11:25 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/16 15:45:04 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/25 23:18:45 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -63,12 +63,12 @@ void move_to_top_a(t_push_swap *data, int index)
     if (index >= size / 2)
     {
         while (data->a.numbers[data->a.top] != target_value)
-            rra(data);
+            rra(data, 1);
     }
     else
     {
         while (data->a.numbers[data->a.top] != target_value)
-            ra(data);
+            ra(data, 1);
     }
 }
 

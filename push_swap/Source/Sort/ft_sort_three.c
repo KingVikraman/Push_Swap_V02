@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 18:11:15 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/08 14:03:50 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/25 23:19:06 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -34,21 +34,21 @@ void	sort_three(t_push_swap *data)
 	else if (top > mid && mid > bottom)
 	{
 		sa(data);
-		rra(data);
+		rra(data, 1);
 		
 	}
 	else if (top > mid && mid < bottom && top > bottom)
-		ra(data);
+		ra(data, 1);
 
 	else if (top < mid && mid > bottom && top < bottom)
 	{
-		rra(data);
+		rra(data, 1);
 		//print_stack_a(&data->a, 'a');
 		sa(data);
 		
 	}
 
 	else if (top < mid && mid > bottom && top > bottom)
-		rra(data);
+		rra(data, 0);
 	
 }

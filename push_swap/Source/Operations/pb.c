@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:48:36 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/24 23:46:27 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/25 23:02:31 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -19,9 +19,11 @@ void    pb(t_push_swap *data)
 	if (data->a.top == -1)
 		return ;
 
-	data->b.top++;                     
+	data->b.top++;
+	data->b.size++;
 	data->b.numbers[data->b.top] = data->a.numbers[data->a.top];
 	data->a.top--;
+	data->a.size--;
 
 	ft_putstr_fd("pb\n", 1);
 }

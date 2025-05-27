@@ -6,16 +6,16 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 19:44:36 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/24 22:44:36 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/25 23:08:13 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "../../Includes/push_swap.h"
 
 
-void    rrb(t_push_swap *data);
+void    rrb(t_push_swap *data, int print);
 
-void    rrb(t_push_swap *data)
+void    rrb(t_push_swap *data, int print)
 {
     int i;
     int temp;
@@ -32,7 +32,9 @@ void    rrb(t_push_swap *data)
         i++;
     }
     data->b.numbers[data->b.top] = temp;
-    ft_putstr_fd("rrb\n", 1);
+
+    if(print)
+        ft_putstr_fd("rrb\n", 1);
 }
 
 // void rrb(t_push_swap *data)
