@@ -81,6 +81,15 @@ int		ft_atoi(const char *str, int  *error);
 void	*ft_calloc(size_t nitems, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
+// ~~~~~~ Initialising Functions  ~~~~~~~
+
+int		count_elements(char **split);
+int		init_stack_b(t_stack *b, int count);
+t_push_swap	*init_data_structure(void);
+int		init_stack_a(t_stack *a, char **split, int count);
+int		initialize_stacks(t_push_swap *data, char **split, int count);
+
+
 
 int		is_sorted(t_stack *a);
 int		stack_size(t_stack a);
@@ -90,6 +99,7 @@ void	sort_three(t_push_swap *data);
 int		find_lowest_index(t_push_swap *data);
 void 	move_to_top_a(t_push_swap *data, int index);
 void	use_hardcoded_sort(t_push_swap *data, int count);
+int	has_duplicate(int *numbers, int size);
 
 
 int ft_abs(int num);

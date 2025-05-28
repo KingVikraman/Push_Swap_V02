@@ -12,6 +12,7 @@
 
 #include "../../Includes/push_swap.h"
 
+int		is_sorted(t_stack *a);
 void	use_hardcoded_sort(t_push_swap *data, int count);
 
 void	use_hardcoded_sort(t_push_swap *data, int count)
@@ -26,4 +27,21 @@ void	use_hardcoded_sort(t_push_swap *data, int count)
 		sort_five(data);
 	else if (count == 5)
 		sort_five(data);
+}
+
+int		is_sorted(t_stack *a)
+{
+	int	i;
+
+	if (a->size <= 1)
+		return (1);
+	i = a->top;
+	while (i > 0)
+	{
+		if (a->numbers[i] > a->numbers[i - 1])
+			return (0);
+		i--;
+	}
+	ft_putstr_fd("Error\n", 1);
+	return (1);
 }
