@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:31:43 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/08 12:34:18 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/27 22:23:33 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -53,7 +53,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	if (!s)

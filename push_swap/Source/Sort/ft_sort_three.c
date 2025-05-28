@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 18:11:15 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/25 23:19:06 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/27 22:22:02 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,41 +14,29 @@
 
 void	sort_three(t_push_swap *data);
 
-
 void	sort_three(t_push_swap *data)
 {
-	int top;
-	int mid;
-	int bottom;
-	
+	int	top;
+	int	mid;
+	int	bottom;
+
 	top = data->a.numbers[data->a.top];
 	mid = data->a.numbers[data->a.top - 1];
 	bottom = data->a.numbers[data->a.top - 2];
-	// printf("%d\n", top);
-	// printf("%d\n", mid);
-	// printf("%d\n", bottom);
-
 	if (top > mid && mid < bottom && top < bottom)
 		sa(data);
-
 	else if (top > mid && mid > bottom)
 	{
 		sa(data);
 		rra(data, 1);
-		
 	}
 	else if (top > mid && mid < bottom && top > bottom)
 		ra(data, 1);
-
 	else if (top < mid && mid > bottom && top < bottom)
 	{
 		rra(data, 1);
-		//print_stack_a(&data->a, 'a');
 		sa(data);
-		
 	}
-
 	else if (top < mid && mid > bottom && top > bottom)
 		rra(data, 0);
-	
 }

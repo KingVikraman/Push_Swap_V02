@@ -6,33 +6,33 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 19:44:36 by rvikrama          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/05/27 22:49:21 by rvikrama         ###   ########.fr       */
+=======
+/*   Updated: 2025/05/27 22:21:08 by rvikrama         ###   ########.fr       */
+>>>>>>> f8ab9151cc5c418252020c314a64c349436db3df
 /*                                                                            */
 /******************************************************************************/
 
 #include "../../Includes/push_swap.h"
 
+void	rrb(t_push_swap *data, int print);
 
-void    rrb(t_push_swap *data, int print);
-
-void    rrb(t_push_swap *data, int print)
+void	rrb(t_push_swap *data, int print)
 {
-    int i;
-    int temp;
+	int	i;
+	int	temp;
 
-    if (data->b.top < 1)
-        return ;
-
-    temp = data->b.numbers[0];
-
-    i = 0;
-    while (i < data->b.top)
-    {
-        data->b.numbers[i] = data->b.numbers[i + 1];
-        i++;
-    }
-    data->b.numbers[data->b.top] = temp;
-
-    if(print)
-        ft_putstr_fd("rrb\n", 1);
+	if (data->b.top < 1)
+		return ;
+	temp = data->b.numbers[0];
+	i = 0;
+	while (i < data->b.top)
+	{
+		data->b.numbers[i] = data->b.numbers[i + 1];
+		i++;
+	}
+	data->b.numbers[data->b.top] = temp;
+	if (print)
+		ft_putstr_fd("rrb\n", 1);
 }
