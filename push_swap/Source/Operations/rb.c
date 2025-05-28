@@ -6,7 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 22:42:40 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/25 23:05:16 by rvikrama         ###   ########.fr       */
+/*   Updated: 2025/05/27 22:49:03 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -36,15 +36,3 @@ void	rb(t_push_swap *data, int print)
 	if (print)
 		ft_putstr_fd("rb\n", 1);
 }
-
-// void rb(t_push_swap *data)
-// {
-//     int first = data->b.numbers[0];
-//     int i = 0;
-//     while (i < data->b.size - 1) {
-//         data->b.numbers[i] = data->b.numbers[i + 1];
-//         i++;
-//     }
-//     data->b.numbers[data->b.size - 1] = first;
-//     ft_putstr_fd("rb\n", 1);
-// }
