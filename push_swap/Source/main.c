@@ -6,11 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:52:07 by rvikrama          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/05/27 22:51:06 by rvikrama         ###   ########.fr       */
-=======
-/*   Updated: 2025/05/27 21:24:00 by rvikrama         ###   ########.fr       */
->>>>>>> f8ab9151cc5c418252020c314a64c349436db3df
+/*   Updated: 2025/05/28 13:44:47 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -34,10 +30,6 @@ int		main(int argc, char **argv)
 		return (1);								// -|  or just the output file.
 	}
 	data = parse_check(argc, argv); // <- this function calls parse_check and pushes the ac and av data, then assigns that to the struct.
-<<<<<<< HEAD
-	
-=======
->>>>>>> f8ab9151cc5c418252020c314a64c349436db3df
 	if (!data || data->error)						//  -|
 	{												//	 |
 		ft_putstr_fd("Error2\n", 2);			 //	  |
@@ -58,13 +50,7 @@ int		main(int argc, char **argv)
 		return (0);
 	}
 	if (count <= 5)
-<<<<<<< HEAD
-	{
 		use_hardcoded_sort(data, count);
-	}
-=======
-		use_hardcoded_sort(data, count);
->>>>>>> f8ab9151cc5c418252020c314a64c349436db3df
 	else
 		sort_large(data);
 	free(data->a.numbers);

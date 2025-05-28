@@ -6,11 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 10:48:18 by rvikrama          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/05/27 22:49:28 by rvikrama         ###   ########.fr       */
-=======
-/*   Updated: 2025/05/27 22:27:54 by rvikrama         ###   ########.fr       */
->>>>>>> f8ab9151cc5c418252020c314a64c349436db3df
+/*   Updated: 2025/05/28 13:45:11 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -61,7 +57,3 @@ void    print_stack_a(t_stack *pile, char name)
     ft_putchar_fd('\n', 1);
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> f8ab9151cc5c418252020c314a64c349436db3df

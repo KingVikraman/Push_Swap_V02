@@ -6,11 +6,7 @@
 /*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:36:00 by rvikrama          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/05/27 22:50:52 by rvikrama         ###   ########.fr       */
-=======
-/*   Updated: 2025/05/27 21:20:41 by rvikrama         ###   ########.fr       */
->>>>>>> f8ab9151cc5c418252020c314a64c349436db3df
+/*   Updated: 2025/05/28 13:47:55 by rvikrama         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -116,20 +112,12 @@ int get_max_bits(t_stack *stack)
 
 void sort_large(t_push_swap *data)
 {
-<<<<<<< HEAD
-    
-	index_stack(&data->a);
-
-=======
     index_stack(&data->a);
->>>>>>> f8ab9151cc5c418252020c314a64c349436db3df
     //Step 1: Push all but top 3 to B
     while (data->a.top + 1 > 3)
+    {
         pb(data);
-<<<<<<< HEAD
-=======
     }
->>>>>>> f8ab9151cc5c418252020c314a64c349436db3df
     // Step 2: Sort the remaining 3 elements in A
     sort_three(data);
 
