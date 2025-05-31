@@ -1,25 +1,24 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvikrama <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/29 16:26:41 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/16 18:06:59 by rvikrama         ###   ########.fr       */
+/*   Created: 2025/05/29 21:26:40 by rvikrama          #+#    #+#             */
+/*   Updated: 2025/05/29 21:26:43 by rvikrama         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
-
-
+/* ************************************************************************** */
 
 #include "../../Includes/push_swap.h"
 
-
 static int	word_count(const char *s, char c)
 {
-	int count = 0;
-	int in_word = 0;
+	int	count;
+	int	in_word;
 
+	count = 0;
+	in_word = 0;
 	while (*s)
 	{
 		if (*s != c && in_word == 0)
@@ -36,9 +35,11 @@ static int	word_count(const char *s, char c)
 
 static char	*word_dup(const char *s, int start, int end)
 {
-	char *word = malloc(end - start + 1);
-	int i = 0;
+	char	*word;
+	int		i;
 
+	word = malloc(end - start + 1);
+	i = 0;
 	if (!word)
 		return (NULL);
 	while (start < end)
@@ -47,19 +48,15 @@ static char	*word_dup(const char *s, int start, int end)
 	return (word);
 }
 
-char **ft_split(const char *s, char c)
+static void	fill_words(char **res, const char *s, char c)
 {
-	char	**res;
-	int		i = 0, j = 0, start = -1;
-	int		words;
+	int	i;
+	int	j;
+	int	start;
 
-	if (!s)
-		return (NULL);
-	words = word_count(s, c);
-	res = malloc(sizeof(char *) * (words + 1));
-	if (!res)
-		return (NULL);
-
+	i = 0;
+	j = 0;
+	start = -1;
 	while (s[i])
 	{
 		if (s[i] != c && start == -1)
@@ -75,6 +72,19 @@ char **ft_split(const char *s, char c)
 		i++;
 	}
 	res[j] = NULL;
-	return (res);
 }
 
+char	**ft_split(const char *s, char c)
+{
+	char	**res;
+	int		words;
+
+	if (!s)
+		return (NULL);
+	words = word_count(s, c);
+	res = malloc(sizeof(char *) * (words + 1));
+	if (!res)
+		return (NULL);
+	fill_words(res, s, c);
+	return (res);
+}

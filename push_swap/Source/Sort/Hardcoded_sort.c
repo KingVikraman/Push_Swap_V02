@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Hardcoded_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvikrama <rvikrama@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvikrama <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/08 16:10:47 by rvikrama          #+#    #+#             */
-/*   Updated: 2025/05/27 22:22:11 by rvikrama         ###   ########.fr       */
+/*   Created: 2025/05/29 22:18:52 by rvikrama          #+#    #+#             */
+/*   Updated: 2025/05/29 22:18:54 by rvikrama         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "../../Includes/push_swap.h"
 
@@ -29,7 +29,7 @@ void	use_hardcoded_sort(t_push_swap *data, int count)
 		sort_five(data);
 }
 
-int		is_sorted(t_stack *a)
+int	is_sorted(t_stack *a)
 {
 	int	i;
 
@@ -42,6 +42,6 @@ int		is_sorted(t_stack *a)
 			return (0);
 		i--;
 	}
-	ft_putstr_fd("Error\n", 1);
+	//ft_putstr_fd("Error\n", 2);
 	return (1);
 }

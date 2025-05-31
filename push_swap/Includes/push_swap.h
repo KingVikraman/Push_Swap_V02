@@ -35,6 +35,8 @@ typedef struct s_push_swap{
 	t_stack a;
 	t_stack b;
 	int error;
+	long result;
+	int	sign;
 	struct s_stack *pile;
 } t_push_swap;
 
@@ -77,7 +79,7 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 char	**ft_split(const char *s, char c);
-int		ft_atoi(const char *str, int  *error);
+int	ft_atoi(const char *str, int *error);
 void	*ft_calloc(size_t nitems, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
@@ -86,11 +88,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int		count_elements(char **split);
 int		init_stack_b(t_stack *b, int count);
 t_push_swap	*init_data_structure(void);
-int		init_stack_a(t_stack *a, char **split, int count);
+int	init_stack_a(t_stack *a, char **split, int count);
 int		initialize_stacks(t_push_swap *data, char **split, int count);
 
 
-
+void	free_all(t_push_swap *data);
 int		is_sorted(t_stack *a);
 int		stack_size(t_stack a);
 void	sort_two(t_push_swap *data);
@@ -100,6 +102,8 @@ int		find_lowest_index(t_push_swap *data);
 void 	move_to_top_a(t_push_swap *data, int index);
 void	use_hardcoded_sort(t_push_swap *data, int count);
 int	has_duplicate(int *numbers, int size);
+void    update_cheapest(t_push_swap *data, t_move *cheapest, int i);
+
 
 
 int ft_abs(int num);
@@ -115,6 +119,11 @@ int find_target_position(t_push_swap *data, int num);
 t_move find_cheapest_move(t_push_swap *data);
 void execute_cheapest_move(t_push_swap *data, t_move move);
 int calculate_cost(int a_rot, int b_rot);
+
+void	exec_double_rotate(t_push_swap *data, t_move *move);
+void	exec_single_rotate_a(t_push_swap *data, t_move *move);
+void	exec_single_rotate_b(t_push_swap *data, t_move *move);
+
 
 
 #endif

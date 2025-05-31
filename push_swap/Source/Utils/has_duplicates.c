@@ -26,10 +26,10 @@ int	has_duplicate(int *numbers, int size)
 		while (j < size)
 		{
 			if (numbers[i] == numbers[j])
-				return (1); // Duplicate found
+				return (1);
 			j++;
 		}
 		i++;
 	}
-	return (0); // No duplicates found
+	return (0);
 }

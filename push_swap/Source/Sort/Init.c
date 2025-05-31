@@ -10,14 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../Includes/push_swap.h"
 
-int		count_elements(char **split);
-int		init_stack_b(t_stack *b, int count);
+int			count_elements(char **split);
+int			init_stack_b(t_stack *b, int count);
 t_push_swap	*init_data_structure(void);
-int		init_stack_a(t_stack *a, char **split, int count);
-int		initialize_stacks(t_push_swap *data, char **split, int count);
+int			init_stack_a(t_stack *a, char **split, int count);
+int			initialize_stacks(t_push_swap *data, char **split, int count);
 
 int	init_stack_a(t_stack *a, char **split, int count)
 {
@@ -29,9 +28,11 @@ int	init_stack_a(t_stack *a, char **split, int count)
 	a->numbers = malloc(sizeof(int) * count);
 	if (!a->numbers)
 		return (0);
-	while (i < count){
+	while (i < count)
+	{
 		a->numbers[i] = ft_atoi(split[count - i - 1], &error);
-		if (error){
+		if (error)
+		{
 			free(a->numbers);
 			a->numbers = NULL;
 			return (0);
@@ -55,14 +56,20 @@ int	init_stack_b(t_stack *b, int count)
 
 int	initialize_stacks(t_push_swap *data, char **split, int count)
 {
-	if (!init_stack_a(&data->a, split, count) || !init_stack_b(&data->b, count))
+	if (!init_stack_a(&data->a, split, count))
+	{
 		return (0);
+	}
+	if (!init_stack_b(&data->b, count))
+	{
+		return (0);
+	}
 	return (1);
 }
 
 t_push_swap	*init_data_structure(void)
 {
-	t_push_swap *data;
+	t_push_swap	*data;
 
 	data = malloc(sizeof(t_push_swap));
 	if (!data)

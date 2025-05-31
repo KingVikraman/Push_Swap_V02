@@ -30,5 +30,7 @@ void	ra(t_push_swap *data, int print)
 	}
 	data->a.numbers[0] = temp;
 	if (print)
+	{
 		ft_putstr_fd("ra\n", 1);
+	}
 }

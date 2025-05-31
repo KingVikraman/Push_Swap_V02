@@ -68,6 +68,7 @@ void	sort_three(t_push_swap *data)
 	top = data->a.numbers[data->a.top];
 	mid = data->a.numbers[data->a.top - 1];
 	bottom = data->a.numbers[data->a.top - 2];
+
 	if (top > mid && mid < bottom && top < bottom)
 		sa(data);
 	else if (top > mid && mid > bottom)
@@ -83,7 +84,7 @@ void	sort_three(t_push_swap *data)
 		sa(data);
 	}
 	else if (top < mid && mid > bottom && top > bottom)
-		rra(data, 0);
+		rra(data, 1);
 }
 
 void	sort_two(t_push_swap *data)
