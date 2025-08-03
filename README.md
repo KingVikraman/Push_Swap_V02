@@ -42,5 +42,4 @@ You have 2 stacks named a and b.
 				The last element becomes the first one. 
 	rrr : rra and rrb at the same time.
 
-my type, what is priyas type-> gently, soft character, Playlist, the way i treat her. 
 
